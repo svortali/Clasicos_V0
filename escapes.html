@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Todo Clásicos · Escapes — Alquiler de autos clásicos para rutas, escapadas y experiencias de viaje premium. Buenos Aires y alrededores.">
+  <title>Escapes — Todo Clásicos · Buenos Aires</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='72' fill='%23C5A35C'>T</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── Escapes hero — open road warmth ── */
+    .hero-media {
+      background: linear-gradient(160deg, #0c110e 0%, #060d08 60%, #090909 100%);
+      position: absolute; inset: 0;
+    }
+    .hero-media::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 60% 30%, rgba(100,140,80,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 70%, rgba(197,163,92,0.08) 0%, transparent 60%);
+    }
+
+    /* Route cards */
+    .routes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .route-card {
+      background: var(--surface);
+      padding: 2.5rem 2rem;
+      transition: background 0.3s ease;
+      position: relative;
+    }
+    .route-card:hover { background: var(--surface-2); }
+    .route-num {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .route-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.75rem;
+    }
+    .route-desc {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin: 0 0 1.5rem;
+    }
+    .route-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .route-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--border-soft);
+      border-radius: 1px;
+    }
+
+    /* Split section */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .split-section { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    .split-visual {
+      aspect-ratio: 4/5;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .split-visual svg { opacity: 0.2; width: 60%; }
+
+    /* Includes list */
+    .includes-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .includes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .includes-list li::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+      background: radial-gradient(circle, var(--gold-dark) 30%, transparent 70%);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════ -->
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo" aria-label="Todo Clásicos — inicio">
+    Todo <span>Clásicos</span>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="bodas.html">Bodas</a></li>
+    <li><a href="escapes.html" class="active">Escapes</a></li>
+    <li><a href="editorial.html">Editorial</a></li>
+    <li><a href="ejecutivo.html">Ejecutivo</a></li>
+    <li><a href="coleccion.html">Colección</a></li>
+    <li><a href="#contacto" class="nav-cta" data-wa aria-label="Contactar por WhatsApp">Contacto</a></li>
+  </ul>
+
+  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Menú móvil">
+  <a href="bodas.html">Bodas</a>
+  <a href="escapes.html">Escapes</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="ejecutivo.html">Ejecutivo</a>
+  <a href="coleccion.html">Colección</a>
+  <a href="#contacto" data-wa>Contacto</a>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section class="hero" id="inicio" aria-label="Escapes hero">
+
+  <div class="hero-media" role="img" aria-label="Escapes — ruta abierta"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Rutas · Escapadas · Experiencias</p>
+
+    <h1 class="hero-title">
+      La ruta<br>
+      <em>más bella</em><br>
+      del mundo.
+    </h1>
+
+    <p class="hero-lead">
+      Algunos viajes se hacen para llegar. Otros, para recordar el camino para siempre.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#rutas" class="btn-primary">
+        Ver experiencias
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href="#contacto" class="btn-ghost" data-wa>Consultar</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     INTRO STATEMENT
+══════════════════════════════════════════════════ -->
+<section style="padding: var(--section-v) 0; background: var(--background);">
+  <div class="container">
+    <div style="max-width: 62ch;">
+      <span class="gold-line" aria-hidden="true"></span>
+      <p class="t-eyebrow" data-reveal>La experiencia</p>
+      <h2 style="font-family: var(--font-display); font-size: var(--text-section); font-weight: 700; color: var(--text); line-height: 1.15; margin: 0.5rem 0 1.5rem;" data-reveal data-delay="1">
+        Un clásico cambia<br>
+        <em style="color: var(--gold-light);">cómo se siente la ruta.</em>
+      </h2>
+      <p class="t-body" style="color: var(--text-dim);" data-reveal data-delay="2">
+        No hay GPS que reemplace manejar por la Ruta 2 en un Mustang del '65 con el viento en la cara. Los escapes en un clásico no son traslados — son el destino en sí mismo. Para los que entienden la diferencia.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     ROUTES
+══════════════════════════════════════════════════ -->
+<section id="rutas" style="padding: 0 0 var(--section-v); background: var(--background);" aria-labelledby="routes-heading">
+  <div class="container">
+    <p class="t-eyebrow" data-reveal>Experiencias populares</p>
+    <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="routes-heading" data-reveal data-delay="1">
+      Rutas que se recuerdan.
+    </h2>
+
+    <div class="routes-grid">
+
+      <div class="route-card" data-reveal>
+        <span class="route-num">01</span>
+        <h3 class="route-title">Día de campo en la Pampa</h3>
+        <p class="route-desc">Salís de Buenos Aires y manejás por la llanura sin límites. Llegada a un estancia, almuerzo campestre, regreso al atardecer. Un día que no olvidás.</p>
+        <div class="route-meta">
+          <span class="route-tag">Full day</span>
+          <span class="route-tag">Hasta 200 km</span>
+          <span class="route-tag">Chauffeur</span>
+        </div>
+      </div>
+
+      <div class="route-card" data-reveal data-delay="1">
+        <span class="route-num">02</span>
+        <h3 class="route-title">Costa Atlántica vintage</h3>
+        <p class="route-desc">Ruta 2, sol, y el Mustang abriéndose camino hacia Mar del Plata. Una experiencia para parejas o amigos que buscan algo diferente al viaje clásico.</p>
+        <div class="route-meta">
+          <span class="route-tag">Fin de semana</span>
+          <span class="route-tag">400 km</span>
+          <span class="route-tag">Self-drive</span>
+        </div>
+      </div>
+
+      <div class="route-card" data-reveal data-delay="2">
+        <span class="route-num">03</span>
+        <h3 class="route-title">Circuito Tigre & Delta</h3>
+        <p class="route-desc">Recorrido por el conurbano norte, llegada al Delta del Tigre, almuerzo en restaurante orilla de río. Regreso con la tarde dorada desde el Cadillac.</p>
+        <div class="route-meta">
+          <span class="route-tag">Medio día</span>
+          <span class="route-tag">80 km</span>
+          <span class="route-tag">Chauffeur</span>
+        </div>
+      </div>
+
+      <div class="route-card" data-reveal>
+        <span class="route-num">04</span>
+        <h3 class="route-title">Buenos Aires nocturno</h3>
+        <p class="route-desc">Una vuelta por los barrios más cinematográficos de la ciudad. Puerto Madero, San Telmo, Palermo de noche. El clásico como parte del espectáculo urbano.</p>
+        <div class="route-meta">
+          <span class="route-tag">Nocturno</span>
+          <span class="route-tag">City</span>
+          <span class="route-tag">Chauffeur</span>
+        </div>
+      </div>
+
+      <div class="route-card" data-reveal data-delay="1">
+        <span class="route-num">05</span>
+        <h3 class="route-title">Propuesta personalizada</h3>
+        <p class="route-desc">¿Tenés una ruta en mente? Lo armamos a tu medida. Destino, duración, vehículo, necesidades especiales. Nosotros coordinamos todo.</p>
+        <div class="route-meta">
+          <span class="route-tag">A medida</span>
+          <span class="route-tag">Consultar</span>
+        </div>
+      </div>
+
+      <div class="route-card" data-reveal data-delay="2">
+        <span class="route-num">06</span>
+        <h3 class="route-title">Aniversario en ruta</h3>
+        <p class="route-desc">Para parejas. Día completo, ruta elegida por ustedes, almuerzo en destino, detalles sorpresa incluidos. Un aniversario que se eleva a otra categoría.</p>
+        <div class="route-meta">
+          <span class="route-tag">Parejas</span>
+          <span class="route-tag">Full day</span>
+          <span class="route-tag">Premium</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SPLIT — Self-drive vs Chauffeur
+══════════════════════════════════════════════════ -->
+<section style="padding: var(--section-v) 0; background: var(--surface);" aria-labelledby="options-heading">
+  <div class="container">
+    <p class="t-eyebrow" data-reveal>Cómo lo hacemos</p>
+    <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 3rem;" id="options-heading" data-reveal data-delay="1">
+      Vos elegís cómo vivir el escape.
+    </h2>
+
+    <div class="split-section">
+
+      <div data-reveal>
+        <div class="split-visual">
+          <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 55 C20 55 35 30 75 28 C95 27 115 28 130 30 L155 32 C165 33 175 40 178 50 L182 55 L20 55Z" fill="currentColor" opacity="0.6"/>
+            <ellipse cx="55" cy="57" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+            <ellipse cx="145" cy="57" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M68 30 L80 22 L120 22 L130 30" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+      </div>
+
+      <div data-reveal data-delay="1">
+        <div style="margin-bottom: 3rem;">
+          <p style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--gold-light); margin: 0 0 0.5rem;">Con chofer</p>
+          <p style="font-size: 0.875rem; color: var(--text-dim); line-height: 1.75; margin: 0 0 1rem;">Te subís, disfrutás el paisaje y nosotros nos ocupamos del camino. Ideal para escapadas románticas, grupos que quieren beber y disfrutar, o experiencias donde el auto es el protagonista.</p>
+          <ul class="includes-list">
+            <li>Chofer profesional incluido</li>
+            <li>Ruta coordinada con anticipación</li>
+            <li>Paradas a pedido del cliente</li>
+            <li>Seguro completo de pasajeros</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--gold-light); margin: 0 0 0.5rem;">Self-drive</p>
+          <p style="font-size: 0.875rem; color: var(--text-dim); line-height: 1.75; margin: 0 0 1rem;">Para los que quieren sentir el volante. Manejás vos el clásico en la ruta que te imaginabas. Requiere licencia de conducir vigente y brief previo con el equipo.</p>
+          <ul class="includes-list">
+            <li>Inducción al vehículo incluida</li>
+            <li>Seguro de cobertura total</li>
+            <li>Soporte telefónico 24h en ruta</li>
+            <li>Kit de documentación y emergencias</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     CTA
+══════════════════════════════════════════════════ -->
+<section class="inquiry" id="contacto" aria-labelledby="inquiry-heading">
+  <div class="container">
+    <p class="t-eyebrow inquiry-eyebrow" data-reveal>Reservas</p>
+    <h2 class="inquiry-title" id="inquiry-heading" data-reveal data-delay="1">
+      ¿A dónde<br>
+      querés<br>
+      <em>escapar?</em>
+    </h2>
+    <p class="t-body inquiry-body" data-reveal data-delay="2">
+      Contanos tu idea y en minutos te armamos una propuesta. Sin formularios. Sin esperas.
+    </p>
+    <div class="inquiry-actions" data-reveal data-delay="3">
+      <a href="#" class="btn-whatsapp" data-wa data-wa-msg="Hola, me gustaría consultar sobre una escapada o ruta con un auto clásico." aria-label="Consultar escape por WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Planear mi escape
+      </a>
+      <a href="coleccion.html" class="btn-ghost">Ver la colección</a>
+    </div>
+    <p class="inquiry-note" data-reveal data-delay="4">Respuesta en menos de una hora · Sin compromiso</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer class="footer" aria-label="Pie de página">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <p class="footer-brand-name">Todo Clásicos</p>
+        <p class="footer-tagline">Elegancia atemporal para los momentos que importan. Buenos Aires.</p>
+        <a href="#" class="btn-whatsapp" data-wa style="font-size:0.75rem; padding:0.65rem 1.25rem; margin-top:0.5rem; display:inline-flex;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Consultar
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Experiencias</h4>
+        <ul>
+          <li><a href="bodas.html">Bodas</a></li>
+          <li><a href="escapes.html">Escapes</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="ejecutivo.html">Ejecutivo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>La Marca</h4>
+        <ul>
+          <li><a href="coleccion.html">La Colección</a></li>
+          <li><a href="#" data-wa>Reservas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#" data-wa>WhatsApp</a></li>
+          <li><a href="tel:+5491139475311">+54 11 3947 5311</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Todo Clásicos · Buenos Aires</p>
+      <nav class="footer-bottom-links" aria-label="Links del footer">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<a href="#" class="whatsapp-float" data-wa aria-label="Contactar por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

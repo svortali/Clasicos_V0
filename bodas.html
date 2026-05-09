@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Todo Clásicos · Bodas — Autos clásicos con chofer para casamientos y ceremonias en Buenos Aires. Elegancia atemporal para tu gran entrada.">
+  <title>Bodas — Todo Clásicos · Buenos Aires</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='72' fill='%23C5A35C'>T</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── Page-specific overrides ── */
+    .hero { --hero-bg: linear-gradient(160deg, #1a0f0a 0%, #0d0906 60%, #090909 100%); }
+    .hero-media {
+      background: var(--hero-bg);
+      position: absolute; inset: 0;
+    }
+    .hero-media::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 70% 40%, rgba(197,163,92,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(139,90,60,0.15) 0%, transparent 60%);
+    }
+
+    /* Moment cards — 2-col grid */
+    .moments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .moment-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .moment-card:hover {
+      border-color: var(--gold-dark);
+      transform: translateY(-4px);
+    }
+    .moment-img {
+      height: 220px;
+      background: var(--surface-3);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .moment-img svg { opacity: 0.25; width: 120px; }
+    .moment-body { padding: 1.5rem; }
+    .moment-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .moment-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.75rem;
+    }
+    .moment-text {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Why us — horizontal feature list */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    .why-item { }
+    .why-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      opacity: 0.5;
+    }
+    .why-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.5rem;
+    }
+    .why-text {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 2rem;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.15;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.25rem;
+      line-height: 1;
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      font-style: italic;
+      margin: 0 0 1.5rem;
+      padding-top: 1rem;
+    }
+    .testimonial-author {
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .testimonial-name {
+      display: block;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+    .testimonial-event {
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+
+    /* Section alt background */
+    .section-alt { background: var(--surface); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════ -->
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo" aria-label="Todo Clásicos — inicio">
+    Todo <span>Clásicos</span>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="bodas.html" class="active">Bodas</a></li>
+    <li><a href="escapes.html">Escapes</a></li>
+    <li><a href="editorial.html">Editorial</a></li>
+    <li><a href="ejecutivo.html">Ejecutivo</a></li>
+    <li><a href="coleccion.html">Colección</a></li>
+    <li><a href="#contacto" class="nav-cta" data-wa aria-label="Contactar por WhatsApp">Contacto</a></li>
+  </ul>
+
+  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Menú móvil">
+  <a href="bodas.html">Bodas</a>
+  <a href="escapes.html">Escapes</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="ejecutivo.html">Ejecutivo</a>
+  <a href="coleccion.html">Colección</a>
+  <a href="#contacto" data-wa>Contacto</a>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section class="hero" id="inicio" aria-label="Bodas hero">
+
+  <div class="hero-media" role="img" aria-label="Bodas — elegancia nupcial"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Casamientos · Buenos Aires</p>
+
+    <h1 class="hero-title">
+      Tu gran<br>
+      <em>entrada.</em><br>
+      Inmortal.
+    </h1>
+
+    <p class="hero-lead">
+      El auto que te lleva al altar merece ser tan especial como el día.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary" data-wa>
+        Consultar para mi boda
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href="coleccion.html" class="btn-ghost">Ver autos</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     MOMENTS — service breakdown
+══════════════════════════════════════════════════ -->
+<section style="padding: var(--section-v) 0; background: var(--background);" aria-labelledby="moments-heading">
+  <div class="container">
+    <div>
+      <span class="gold-line" aria-hidden="true"></span>
+      <p class="t-eyebrow" data-reveal>El servicio</p>
+      <h2 style="font-family: var(--font-display); font-size: var(--text-section); font-weight: 700; color: var(--text); line-height: 1.15; margin: 0 0 0.5rem;" id="moments-heading" data-reveal data-delay="1">
+        Cada detalle,<br>
+        <em style="color: var(--gold-light);">cuidado.</em>
+      </h2>
+      <p class="t-body" style="max-width: 42ch; color: var(--text-dim);" data-reveal data-delay="2">
+        Sabemos que el día del casamiento no admite improvisaciones. Por eso trabajamos con la misma exigencia que los mejores proveedores del sector.
+      </p>
+    </div>
+
+    <div class="moments-grid">
+
+      <div class="moment-card" data-reveal>
+        <div class="moment-img">
+          <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20 55 C20 55 35 30 75 28 C95 27 115 28 130 30 L155 32 C165 33 175 40 178 50 L182 55 L20 55Z" fill="currentColor" opacity="0.6"/>
+            <ellipse cx="55" cy="57" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+            <ellipse cx="145" cy="57" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M68 30 L80 22 L120 22 L130 30" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="moment-body">
+          <span class="moment-label">Traslado nupcial</span>
+          <h3 class="moment-title">De casa a la iglesia</h3>
+          <p class="moment-text">Llegás en el auto que siempre imaginaste. Puntual, impecable, con el chofer que sabe exactamente cómo manejar ese momento.</p>
+        </div>
+      </div>
+
+      <div class="moment-card" data-reveal data-delay="1">
+        <div class="moment-img">
+          <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 52 C15 52 30 28 65 26 C85 25 110 26 130 28 L158 30 C170 32 180 40 183 50 L186 52 L15 52Z" fill="currentColor" opacity="0.6"/>
+            <ellipse cx="48" cy="54" rx="12" ry="12" stroke="currentColor" stroke-width="2" fill="none"/>
+            <ellipse cx="150" cy="54" rx="12" ry="12" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M62 28 L72 20 L118 20 L128 28" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="moment-body">
+          <span class="moment-label">Sesión fotográfica</span>
+          <h3 class="moment-title">Las fotos que duran para siempre</h3>
+          <p class="moment-text">Un clásico en la sesión fotográfica transforma cada toma. Fondo perfecto, detalle visual que hace que las fotos sean únicas.</p>
+        </div>
+      </div>
+
+      <div class="moment-card" data-reveal data-delay="2">
+        <div class="moment-img">
+          <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M10 54 C10 54 22 26 60 24 C85 23 115 24 140 26 L165 28 C175 30 185 40 188 52 L190 54 L10 54Z" fill="currentColor" opacity="0.6"/>
+            <ellipse cx="45" cy="56" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+            <ellipse cx="155" cy="56" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M58 26 L68 18 L128 18 L140 26" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="moment-body">
+          <span class="moment-label">Salida de fiesta</span>
+          <h3 class="moment-title">El final más elegante</h3>
+          <p class="moment-text">La partida de los novios en un clásico es la imagen que todos recuerdan. Coordinamos el timing con tu equipo para que salga perfecto.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     WHY US
+══════════════════════════════════════════════════ -->
+<section class="section-alt" style="padding: var(--section-v) 0;" aria-labelledby="why-heading">
+  <div class="container">
+    <p class="t-eyebrow" data-reveal>Por qué elegirnos</p>
+    <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="why-heading" data-reveal data-delay="1">
+      El día más importante merece<br>el proveedor correcto.
+    </h2>
+
+    <div class="why-grid">
+
+      <div class="why-item" data-reveal>
+        <div class="why-num">01</div>
+        <h3 class="why-title">Puntualidad garantizada</h3>
+        <p class="why-text">Sabemos que en una boda los tiempos son sagrados. Llegamos con antelación y coordinamos con tu wedding planner.</p>
+      </div>
+
+      <div class="why-item" data-reveal data-delay="1">
+        <div class="why-num">02</div>
+        <h3 class="why-title">Vehículos en perfecto estado</h3>
+        <p class="why-text">Cada auto llega detallado y preparado. Sin manchas, sin imperfecciones. Listo para las fotos más exigentes.</p>
+      </div>
+
+      <div class="why-item" data-reveal data-delay="2">
+        <div class="why-num">03</div>
+        <h3 class="why-title">Chofer profesional</h3>
+        <p class="why-text">Nuestros choferes conocen el protocolo nupcial. Formales, discretos, con experiencia en eventos de primer nivel.</p>
+      </div>
+
+      <div class="why-item" data-reveal data-delay="3">
+        <div class="why-num">04</div>
+        <h3 class="why-title">Coordinación total</h3>
+        <p class="why-text">Nos adaptamos a tu cronograma. Múltiples traslados, distintas locaciones. Todo bajo un solo servicio.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════════ -->
+<section style="padding: var(--section-v) 0; background: var(--background);" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <p class="t-eyebrow" data-reveal>Parejas que confiaron en nosotros</p>
+    <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="testimonials-heading" data-reveal data-delay="1">
+      Lo que dicen las parejas.
+    </h2>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card" data-reveal>
+        <p class="testimonial-text">Contratamos el Mercedes W111 para nuestra boda y fue la mejor decisión. El auto llegó inmaculado, el chofer fue increíblemente profesional y las fotos quedaron espectaculares. Todos los invitados preguntaban por él.</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Valentina & Martín</span>
+          <span class="testimonial-event">Casamiento · Palermo, Buenos Aires</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-reveal data-delay="1">
+        <p class="testimonial-text">Desde el primer mensaje fueron súper atentos. Coordinaron todo con nuestra wedding planner sin ningún problema. La llegada a la iglesia en el Cadillac fue un momento que nunca voy a olvidar.</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Carolina & Sebastián</span>
+          <span class="testimonial-event">Casamiento · San Isidro, GBA</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-reveal data-delay="2">
+        <p class="testimonial-text">El Mustang en la sesión de fotos fue un hit total. El fotógrafo quedó encantado. Vale cada peso y lo recomendamos sin dudarlo a todas las parejas que conocemos.</p>
+        <div class="testimonial-author">
+          <span class="testimonial-name">Lucía & Federico</span>
+          <span class="testimonial-event">Casamiento · Pilar, Buenos Aires</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     CTA
+══════════════════════════════════════════════════ -->
+<section class="inquiry" id="contacto" aria-labelledby="inquiry-heading">
+  <div class="container">
+    <p class="t-eyebrow inquiry-eyebrow" data-reveal>Reservas y consultas</p>
+    <h2 class="inquiry-title" id="inquiry-heading" data-reveal data-delay="1">
+      ¿Cuándo<br>
+      es tu<br>
+      <em>gran día?</em>
+    </h2>
+    <p class="t-body inquiry-body" data-reveal data-delay="2">
+      Escribinos con la fecha y te ayudamos a elegir el auto ideal para tu boda. Respuesta en menos de una hora.
+    </p>
+    <div class="inquiry-actions" data-reveal data-delay="3">
+      <a href="#" class="btn-whatsapp" data-wa data-wa-msg="Hola, me gustaría consultar sobre el alquiler de un auto clásico para mi boda." aria-label="Consultar para boda por WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Consultar para mi boda
+      </a>
+      <a href="coleccion.html" class="btn-ghost">Ver la colección</a>
+    </div>
+    <p class="inquiry-note" data-reveal data-delay="4">Fechas limitadas · Reserva con anticipación</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer class="footer" aria-label="Pie de página">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <p class="footer-brand-name">Todo Clásicos</p>
+        <p class="footer-tagline">Elegancia atemporal para los momentos que importan. Buenos Aires.</p>
+        <a href="#" class="btn-whatsapp" data-wa style="font-size:0.75rem; padding:0.65rem 1.25rem; margin-top:0.5rem; display:inline-flex;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Consultar
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Experiencias</h4>
+        <ul>
+          <li><a href="bodas.html">Bodas</a></li>
+          <li><a href="escapes.html">Escapes</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="ejecutivo.html">Ejecutivo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>La Marca</h4>
+        <ul>
+          <li><a href="coleccion.html">La Colección</a></li>
+          <li><a href="#" data-wa>Reservas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#" data-wa>WhatsApp</a></li>
+          <li><a href="tel:+5491139475311">+54 11 3947 5311</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Todo Clásicos · Buenos Aires</p>
+      <nav class="footer-bottom-links" aria-label="Links del footer">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<!-- FLOATING WHATSAPP -->
+<a href="#" class="whatsapp-float" data-wa aria-label="Contactar por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

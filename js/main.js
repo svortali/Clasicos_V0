@@ -1,0 +1,136 @@
+/* ============================================================
+   TODO CLÁSICOS — Main JS
+   ============================================================ */
+
+const WA_NUMBER  = '1139475311';
+const WA_MESSAGE = 'Hola, me gustaría consultar sobre el alquiler de un auto clásico.';
+const WA_LINK    = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`;
+
+/* ─── WhatsApp links ─────────────────────────────────────── */
+
+function initWhatsApp() {
+  document.querySelectorAll('[data-wa]').forEach(el => {
+    const msg = el.dataset.waMsg || WA_MESSAGE;
+    const link = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    if (el.tagName === 'A') {
+      el.href = link;
+      el.target = '_blank';
+      el.rel = 'noopener noreferrer';
+    }
+    el.addEventListener('click', () => {
+      if (window.fbq) fbq('track', 'Lead');
+    });
+  });
+}
+
+/* ─── Navigation scroll behaviour ───────────────────────── */
+
+function initNav() {
+  const nav = document.getElementById('nav');
+  if (!nav) return;
+
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile toggle
+  const toggle = nav.querySelector('.nav-toggle');
+  const mobileMenu = document.getElementById('nav-mobile');
+  if (toggle && mobileMenu) {
+    toggle.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      document.body.style.overflow = open ? 'hidden' : '';
+      const spans = toggle.querySelectorAll('span');
+      if (open) {
+        spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+        spans[1].style.opacity   = '0';
+        spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+      } else {
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+        const spans = toggle.querySelectorAll('span');
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      });
+    });
+  }
+}
+
+/* ─── Smooth anchor scroll ──────────────────────────────── */
+
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+}
+
+/* ─── Scroll reveal (IntersectionObserver) ───────────────── */
+
+function initReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+}
+
+/* ─── Hero entrance (GSAP) — opacity-safe version ───────── */
+
+function initHeroGSAP() {
+  if (typeof gsap === 'undefined') return;
+
+  // Only animate transform (no opacity) so button is never invisible
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  tl.from('.hero-eyebrow',  { y: 18, duration: 0.8, delay: 0.2 })
+    .from('.hero-title',    { y: 50, duration: 1.0 }, '-=0.5')
+    .from('.hero-lead',     { y: 24, duration: 0.8 }, '-=0.55')
+    .from('.hero-actions',  { y: 20, duration: 0.6 }, '-=0.4')
+    .from('.hero-scroll-hint', { opacity: 0, duration: 0.8 }, '-=0.2');
+
+  // Subtle hero media scale-in
+  const media = document.querySelector('.hero-media');
+  if (media) {
+    setTimeout(() => media.classList.add('loaded'), 100);
+  }
+}
+
+/* ─── Marquee – duplicate content for seamless loop ─────── */
+
+function initMarquee() {
+  const track = document.querySelector('.marquee-track');
+  if (!track) return;
+  // Clone items so the loop is seamless
+  track.innerHTML += track.innerHTML;
+}
+
+/* ─── INIT ───────────────────────────────────────────────── */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initWhatsApp();
+  initNav();
+  initSmoothScroll();
+  initReveal();
+  initMarquee();
+  initHeroGSAP();
+});
+
+window.TodoClasicos = { WA_LINK };

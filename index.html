@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Todo Clásicos — Alquiler de autos clásicos con chofer para bodas, eventos, editorial y experiencias premium en Buenos Aires.">
+  <title>Todo Clásicos — Autos Clásicos con Chofer · Buenos Aires</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='72' fill='%23C5A35C'>T</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════ -->
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo" aria-label="Todo Clásicos — inicio">
+    Todo <span>Clásicos</span>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="bodas.html">Bodas</a></li>
+    <li><a href="escapes.html">Escapes</a></li>
+    <li><a href="editorial.html">Editorial</a></li>
+    <li><a href="ejecutivo.html">Ejecutivo</a></li>
+    <li><a href="coleccion.html">Colección</a></li>
+    <li><a href="#contacto" class="nav-cta" data-wa aria-label="Contactar por WhatsApp">Contacto</a></li>
+  </ul>
+
+  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Menú móvil">
+  <a href="bodas.html">Bodas</a>
+  <a href="escapes.html">Escapes</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="ejecutivo.html">Ejecutivo</a>
+  <a href="coleccion.html">Colección</a>
+  <a href="#contacto" data-wa>Contacto</a>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section class="hero" id="inicio" aria-label="Hero principal">
+
+  <div class="hero-media" role="img" aria-label="Atmósfera Todo Clásicos"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Buenos Aires · Desde 2024</p>
+
+    <h1 class="hero-title">
+      Autos que<br>
+      <em>definen</em><br>
+      el momento.
+    </h1>
+
+    <p class="hero-lead">
+      Clásicos con historia para eventos, bodas y experiencias que se recuerdan para siempre.
+    </p>
+
+    <div class="hero-actions">
+      <a href="coleccion.html" class="btn-primary">
+        Ver la colección
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href="#experiencias" class="btn-ghost">Explorar</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     MARQUEE TICKER
+══════════════════════════════════════════════════ -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Bodas</span>
+    <span class="marquee-sep">·</span>
+    <span class="marquee-item">Escapes</span>
+    <span class="marquee-sep">·</span>
+    <span class="marquee-item">Editorial</span>
+    <span class="marquee-sep">·</span>
+    <span class="marquee-item">Ejecutivo</span>
+    <span class="marquee-sep">·</span>
+    <span class="marquee-item">Colección</span>
+    <span class="marquee-sep">·</span>
+    <span class="marquee-item">Buenos Aires</span>
+    <span class="marquee-sep">·</span>
+    <span class="marquee-item">1963</span>
+    <span class="marquee-sep">·</span>
+    <span class="marquee-item">Elegancia</span>
+    <span class="marquee-sep">·</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     BRAND STATEMENT
+══════════════════════════════════════════════════ -->
+<section class="statement" aria-labelledby="statement-heading">
+  <div class="container">
+    <div class="statement-inner">
+
+      <div class="statement-text">
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="t-eyebrow" data-reveal>Nuestra filosofía</p>
+        <h2 class="statement-quote" id="statement-heading" data-reveal data-delay="1">
+          No vendemos autos.<br>
+          <em>Vendemos llegadas</em><br>
+          que se recuerdan.
+        </h2>
+        <p class="t-body statement-body" data-reveal data-delay="2">
+          Cada evento merece una entrada a la altura. Trabajamos con quienes entienden que los detalles hacen la diferencia, y que la elegancia no grita — simplemente aparece.
+        </p>
+        <div data-reveal data-delay="3">
+          <a href="#experiencias" class="btn-ghost">Conocer las experiencias</a>
+        </div>
+      </div>
+
+      <div class="statement-visual" data-reveal data-delay="2" role="img" aria-label="Todo Clásicos — imagen de marca">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     EXPERIENCES GRID
+══════════════════════════════════════════════════ -->
+<section id="experiencias" aria-labelledby="exp-heading">
+  <div class="container">
+    <div class="experiences-header">
+      <p class="t-eyebrow" data-reveal>Experiencias</p>
+      <h2 class="experiences-title" id="exp-heading" data-reveal data-delay="1">Cada ocasión, una historia.</h2>
+    </div>
+  </div>
+
+  <div class="experiences-grid" role="list">
+
+    <article class="experience-card" data-cat="bodas" role="listitem" data-reveal>
+      <div class="experience-bg" aria-hidden="true"></div>
+      <div class="experience-overlay" aria-hidden="true"></div>
+      <div class="experience-content">
+        <span class="experience-num">01</span>
+        <h3 class="experience-title">Bodas</h3>
+        <p class="experience-desc">Elegancia atemporal para tu gran entrada.</p>
+        <a href="bodas.html" class="experience-link" aria-label="Explorar bodas">
+          Explorar
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="experience-card" data-cat="escapes" role="listitem" data-reveal data-delay="1">
+      <div class="experience-bg" aria-hidden="true"></div>
+      <div class="experience-overlay" aria-hidden="true"></div>
+      <div class="experience-content">
+        <span class="experience-num">02</span>
+        <h3 class="experience-title">Escapes</h3>
+        <p class="experience-desc">Rutas, paisajes y libertad con estilo.</p>
+        <a href="escapes.html" class="experience-link" aria-label="Explorar escapes">
+          Explorar
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="experience-card" data-cat="editorial" role="listitem" data-reveal data-delay="2">
+      <div class="experience-bg" aria-hidden="true"></div>
+      <div class="experience-overlay" aria-hidden="true"></div>
+      <div class="experience-content">
+        <span class="experience-num">03</span>
+        <h3 class="experience-title">Editorial</h3>
+        <p class="experience-desc">Producciones de moda, campaña y contenido.</p>
+        <a href="editorial.html" class="experience-link" aria-label="Explorar editorial">
+          Explorar
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="experience-card" data-cat="ejecutivo" role="listitem" data-reveal data-delay="3">
+      <div class="experience-bg" aria-hidden="true"></div>
+      <div class="experience-overlay" aria-hidden="true"></div>
+      <div class="experience-content">
+        <span class="experience-num">04</span>
+        <h3 class="experience-title">Ejecutivo</h3>
+        <p class="experience-desc">Presencia, protocolo y distinción corporativa.</p>
+        <a href="ejecutivo.html" class="experience-link" aria-label="Explorar ejecutivo">
+          Explorar
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FLEET PREVIEW
+══════════════════════════════════════════════════ -->
+<section class="fleet" aria-labelledby="fleet-heading">
+  <div class="container">
+
+    <div class="fleet-header">
+      <div>
+        <p class="t-eyebrow" data-reveal>La colección</p>
+        <h2 class="fleet-title" id="fleet-heading" data-reveal data-delay="1">Tres íconos.<br>Un solo estándar.</h2>
+      </div>
+      <a href="coleccion.html" class="btn-ghost" data-reveal data-delay="2">
+        Ver colección completa
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="fleet-grid">
+
+      <!-- Mercedes-Benz W111 — featured (spans 2 rows) -->
+      <article class="fleet-card" data-reveal>
+        <div class="fleet-image">
+          <div class="fleet-img-placeholder">
+            <!-- Car silhouette SVG -->
+            <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 55 C20 55 35 30 75 28 C95 27 115 28 130 30 L155 32 C165 33 175 40 178 50 L182 55 L20 55Z" fill="currentColor" opacity="0.6"/>
+              <ellipse cx="55" cy="57" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+              <ellipse cx="145" cy="57" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M68 30 L80 22 L120 22 L130 30" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M20 55 L14 55 L14 50 L20 50" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M182 55 L188 55 L188 50 L182 50" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fleet-info">
+          <p class="fleet-year">1963 – 1971</p>
+          <h3 class="fleet-name">Mercedes-Benz W111</h3>
+          <p class="fleet-desc">El clásico por definición. Elegancia germánica con historia que se siente.</p>
+          <a href="coleccion.html" class="fleet-action" aria-label="Ver detalles del Mercedes-Benz W111">
+            Ver detalles
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Ford Mustang 1965 -->
+      <article class="fleet-card" data-reveal data-delay="1">
+        <div class="fleet-image">
+          <div class="fleet-img-placeholder">
+            <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M15 52 C15 52 30 28 65 26 C85 25 110 26 130 28 L158 30 C170 32 180 40 183 50 L186 52 L15 52Z" fill="currentColor" opacity="0.6"/>
+              <ellipse cx="48" cy="54" rx="12" ry="12" stroke="currentColor" stroke-width="2" fill="none"/>
+              <ellipse cx="150" cy="54" rx="12" ry="12" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M62 28 L72 20 L118 20 L128 28" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M128 26 L135 28" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fleet-info">
+          <p class="fleet-year">1965</p>
+          <h3 class="fleet-name">Ford Mustang</h3>
+          <p class="fleet-desc">Potencia americana con carácter inconfundible.</p>
+          <a href="coleccion.html" class="fleet-action" aria-label="Ver detalles del Ford Mustang 1965">
+            Ver detalles
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Cadillac Eldorado 1955 -->
+      <article class="fleet-card" data-reveal data-delay="2">
+        <div class="fleet-image">
+          <div class="fleet-img-placeholder">
+            <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M10 54 C10 54 22 26 60 24 C85 23 115 24 140 26 L165 28 C175 30 185 40 188 52 L190 54 L10 54Z" fill="currentColor" opacity="0.6"/>
+              <ellipse cx="45" cy="56" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+              <ellipse cx="155" cy="56" rx="13" ry="13" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M58 26 L68 18 L128 18 L140 26" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M165 26 L172 20 L180 26" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="fleet-info">
+          <p class="fleet-year">1955</p>
+          <h3 class="fleet-name">Cadillac Eldorado</h3>
+          <p class="fleet-desc">El estilo americano en su máxima expresión dorada.</p>
+          <a href="coleccion.html" class="fleet-action" aria-label="Ver detalles del Cadillac Eldorado 1955">
+            Ver detalles
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     PROCESS
+══════════════════════════════════════════════════ -->
+<section class="process" aria-labelledby="process-heading">
+  <div class="container">
+    <div class="process-inner">
+
+      <div class="process-left">
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="t-eyebrow process-label" data-reveal>Cómo funciona</p>
+        <h2 class="process-heading" id="process-heading" data-reveal data-delay="1">
+          Simple.<br>
+          <em style="font-style:italic; color: var(--gold-light)">Elegante.</em><br>
+          Sin vueltas.
+        </h2>
+      </div>
+
+      <div class="process-steps">
+
+        <div class="process-step" data-reveal>
+          <span class="step-num" aria-hidden="true">01</span>
+          <div>
+            <h3 class="step-title">Elegís tu auto</h3>
+            <p class="step-body">Explorá la colección y encontrá el que mejor representa tu estilo y ocasión. Cada vehículo tiene su propio carácter.</p>
+          </div>
+        </div>
+
+        <div class="process-step" data-reveal data-delay="1">
+          <span class="step-num" aria-hidden="true">02</span>
+          <div>
+            <h3 class="step-title">Coordinamos juntos</h3>
+            <p class="step-body">Nos contás los detalles: fecha, horario, recorrido, necesidades especiales. Armamos el servicio a tu medida.</p>
+          </div>
+        </div>
+
+        <div class="process-step" data-reveal data-delay="2">
+          <span class="step-num" aria-hidden="true">03</span>
+          <div>
+            <h3 class="step-title">Vivís el momento</h3>
+            <p class="step-body">Llegás. Todos miran. Te bajás con presencia. Nosotros nos encargamos de que todo sea perfecto desde el primer segundo.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     INQUIRY / CTA
+══════════════════════════════════════════════════ -->
+<section class="inquiry" id="contacto" aria-labelledby="inquiry-heading">
+  <div class="container">
+    <p class="t-eyebrow inquiry-eyebrow" data-reveal>Reservas y consultas</p>
+    <h2 class="inquiry-title" id="inquiry-heading" data-reveal data-delay="1">
+      ¿Cuál es<br>
+      tu próxima<br>
+      <em>gran entrada?</em>
+    </h2>
+    <p class="t-body inquiry-body" data-reveal data-delay="2">
+      Sin formularios largos, sin esperas. Escribinos directamente y en minutos empezamos a construir tu momento.
+    </p>
+    <div class="inquiry-actions" data-reveal data-delay="3">
+      <a href="#" class="btn-whatsapp" data-wa aria-label="Contactar por WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Escribinos por WhatsApp
+      </a>
+      <a href="coleccion.html" class="btn-ghost">Ver la colección</a>
+    </div>
+    <p class="inquiry-note" data-reveal data-delay="4">Respuesta en menos de una hora · Sin compromiso</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer class="footer" aria-label="Pie de página">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <p class="footer-brand-name">Todo Clásicos</p>
+        <p class="footer-tagline">Elegancia atemporal para los momentos que importan. Buenos Aires.</p>
+        <a href="#" class="btn-whatsapp" data-wa style="font-size:0.75rem; padding:0.65rem 1.25rem; margin-top:0.5rem; display:inline-flex;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Consultar
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Experiencias</h4>
+        <ul>
+          <li><a href="bodas.html">Bodas</a></li>
+          <li><a href="escapes.html">Escapes</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="ejecutivo.html">Ejecutivo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>La Marca</h4>
+        <ul>
+          <li><a href="coleccion.html">La Colección</a></li>
+          <li><a href="#" data-wa>Reservas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#" data-wa>WhatsApp</a></li>
+          <li><a href="tel:+5491139475311">+54 11 3947 5311</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Todo Clásicos · Buenos Aires</p>
+      <nav class="footer-bottom-links" aria-label="Links del footer">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════
+     FLOATING WHATSAPP
+══════════════════════════════════════════════════ -->
+<a href="#" class="whatsapp-float" data-wa aria-label="Contactar por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+
+<!-- GSAP (hero entrance only) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

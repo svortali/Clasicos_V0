@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Todo Clásicos · Editorial — Autos clásicos para producciones de moda, campaña, música y cine en Buenos Aires.">
+  <title>Editorial — Todo Clásicos · Buenos Aires</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='72' fill='%23C5A35C'>T</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Editorial hero — high-contrast fashion */
+    .hero-media {
+      background: linear-gradient(135deg, #050505 0%, #0d0d0d 50%, #161410 100%);
+      position: absolute; inset: 0;
+    }
+    .hero-media::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(197,163,92,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 50% at 0% 80%, rgba(197,163,92,0.05) 0%, transparent 60%);
+    }
+
+    /* Production types — large editorial grid */
+    .production-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    @media (max-width: 640px) {
+      .production-grid { grid-template-columns: 1fr; }
+    }
+    .production-item {
+      background: var(--surface);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+      cursor: default;
+    }
+    .production-item:hover { background: var(--surface-2); }
+    .production-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-dark), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .production-item:hover::after { transform: scaleX(1); }
+    .production-icon {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+      display: block;
+      opacity: 0.6;
+    }
+    .production-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.75rem;
+    }
+    .production-desc {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* Client types */
+    .clients-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .client-tag {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border-soft);
+      border-radius: 1px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .client-tag:hover {
+      border-color: var(--gold-dark);
+      color: var(--gold-light);
+    }
+
+    /* Process editorial */
+    .ed-process {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      counter-reset: steps;
+    }
+    .ed-step {
+      counter-increment: steps;
+      position: relative;
+      padding-left: 1rem;
+      border-left: 1px solid var(--border);
+    }
+    .ed-step-num {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .ed-step-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 0.5rem;
+    }
+    .ed-step-body {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════ -->
+<nav class="nav" id="nav" aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo" aria-label="Todo Clásicos — inicio">
+    Todo <span>Clásicos</span>
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li><a href="bodas.html">Bodas</a></li>
+    <li><a href="escapes.html">Escapes</a></li>
+    <li><a href="editorial.html" class="active">Editorial</a></li>
+    <li><a href="ejecutivo.html">Ejecutivo</a></li>
+    <li><a href="coleccion.html">Colección</a></li>
+    <li><a href="#contacto" class="nav-cta" data-wa aria-label="Contactar por WhatsApp">Contacto</a></li>
+  </ul>
+
+  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Menú móvil">
+  <a href="bodas.html">Bodas</a>
+  <a href="escapes.html">Escapes</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="ejecutivo.html">Ejecutivo</a>
+  <a href="coleccion.html">Colección</a>
+  <a href="#contacto" data-wa>Contacto</a>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section class="hero" id="inicio" aria-label="Editorial hero">
+
+  <div class="hero-media" role="img" aria-label="Editorial — producción visual"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Moda · Campaña · Cine · Música</p>
+
+    <h1 class="hero-title">
+      El vehículo<br>
+      que hace<br>
+      <em>la imagen.</em>
+    </h1>
+
+    <p class="hero-lead">
+      Para directores creativos, fotógrafos y productoras que saben que el prop correcto transforma una toma.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary" data-wa data-wa-msg="Hola, me gustaría consultar sobre el alquiler de un auto clásico para una producción editorial.">
+        Consultar producción
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+      <a href="coleccion.html" class="btn-ghost">Ver autos</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     STATEMENT
+══════════════════════════════════════════════════ -->
+<section style="padding: var(--section-v) 0; background: var(--background);">
+  <div class="container">
+    <div style="max-width: 58ch;">
+      <span class="gold-line" aria-hidden="true"></span>
+      <p class="t-eyebrow" data-reveal>Por qué importa el prop</p>
+      <h2 style="font-family: var(--font-display); font-size: var(--text-section); font-weight: 700; color: var(--text); line-height: 1.15; margin: 0.5rem 0 1.5rem;" data-reveal data-delay="1">
+        Un clásico no es<br>
+        <em style="color: var(--gold-light);">decoración. Es narrativa.</em>
+      </h2>
+      <p class="t-body" style="color: var(--text-dim);" data-reveal data-delay="2">
+        Los autos clásicos tienen historia visual acumulada. Llevan décadas en campañas, películas y editoriales internacionales. Cuando aparecen en una toma, no hay que explicar nada — la imagen habla sola. Eso es lo que ofrecemos: un ícono visual listo para producción.
+      </p>
+    </div>
+
+    <div class="stats-row" data-reveal data-delay="1">
+      <div class="stat-item">
+        <span class="stat-num">60+</span>
+        <span class="stat-label">Producciones realizadas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Vehículos disponibles</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">24h</span>
+        <span class="stat-label">Respuesta garantizada</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Satisfacción en producción</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     PRODUCTION TYPES
+══════════════════════════════════════════════════ -->
+<section style="padding: 0 0 var(--section-v); background: var(--background);" aria-labelledby="productions-heading">
+  <div class="container">
+    <p class="t-eyebrow" data-reveal>Tipos de producción</p>
+    <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="productions-heading" data-reveal data-delay="1">
+      Para todo tipo de proyecto visual.
+    </h2>
+
+    <div class="production-grid">
+
+      <div class="production-item" data-reveal>
+        <span class="production-icon" aria-hidden="true">◈</span>
+        <h3 class="production-title">Moda & Editorial</h3>
+        <p class="production-desc">Lookbooks, editoriales de revista, campañas de temporada. El auto como protagonista o fondo que define la atmósfera de toda la producción.</p>
+      </div>
+
+      <div class="production-item" data-reveal data-delay="1">
+        <span class="production-icon" aria-hidden="true">▷</span>
+        <h3 class="production-title">Videos musicales</h3>
+        <p class="production-desc">Desde tomas en movimiento hasta escenas estáticas de alto impacto. Coordinamos con directores y productoras para garantizar la logística.</p>
+      </div>
+
+      <div class="production-item" data-reveal>
+        <span class="production-icon" aria-hidden="true">⬡</span>
+        <h3 class="production-title">Publicidad & Campaña</h3>
+        <p class="production-desc">Spots publicitarios, campañas digitales, contenido para redes. El clásico como símbolo de exclusividad y distinción de marca.</p>
+      </div>
+
+      <div class="production-item" data-reveal data-delay="1">
+        <span class="production-icon" aria-hidden="true">◎</span>
+        <h3 class="production-title">Cine & Series</h3>
+        <p class="production-desc">Producciones audiovisuales que requieren vehículos de época con documentación y disponibilidad extendida. Trabajo con arte y dirección.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     WHO WE WORK WITH
+══════════════════════════════════════════════════ -->
+<section style="padding: var(--section-v) 0; background: var(--surface);" aria-labelledby="clients-heading">
+  <div class="container">
+    <p class="t-eyebrow" data-reveal>Con quiénes trabajamos</p>
+    <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="clients-heading" data-reveal data-delay="1">
+      El equipo detrás de la imagen.
+    </h2>
+    <p style="font-size: 0.9rem; color: var(--text-dim); line-height: 1.75; max-width: 50ch; margin: 1rem 0 0;" data-reveal data-delay="2">
+      Trabajamos con profesionales que entienden el valor de cada detalle. Si tu proyecto requiere coordinación especial, flexibilidad horaria o locaciones fuera de lo común, podemos resolverlo.
+    </p>
+
+    <div class="clients-list" data-reveal data-delay="2">
+      <span class="client-tag">Fotógrafos</span>
+      <span class="client-tag">Directoras de arte</span>
+      <span class="client-tag">Productoras de video</span>
+      <span class="client-tag">Agencias creativas</span>
+      <span class="client-tag">Directores de cine</span>
+      <span class="client-tag">Marcas de moda</span>
+      <span class="client-tag">Sellos musicales</span>
+      <span class="client-tag">Contenido digital</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     PROCESS
+══════════════════════════════════════════════════ -->
+<section style="padding: var(--section-v) 0; background: var(--background);" aria-labelledby="ed-process-heading">
+  <div class="container">
+    <p class="t-eyebrow" data-reveal>Cómo trabajamos</p>
+    <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="ed-process-heading" data-reveal data-delay="1">
+      Proceso claro. Sin sorpresas.
+    </h2>
+
+    <div class="ed-process">
+
+      <div class="ed-step" data-reveal>
+        <span class="ed-step-num">01</span>
+        <h3 class="ed-step-title">Brief inicial</h3>
+        <p class="ed-step-body">Nos contás el proyecto: tipo de producción, fecha, locación, duración, vehículo preferido. Respondemos en menos de 24 horas con propuesta.</p>
+      </div>
+
+      <div class="ed-step" data-reveal data-delay="1">
+        <span class="ed-step-num">02</span>
+        <h3 class="ed-step-title">Coordinación logística</h3>
+        <p class="ed-step-body">Confirmamos fecha, acordamos traslado del vehículo a la locación, documentación necesaria y cualquier requerimiento especial del set.</p>
+      </div>
+
+      <div class="ed-step" data-reveal data-delay="2">
+        <span class="ed-step-num">03</span>
+        <h3 class="ed-step-title">Día de producción</h3>
+        <p class="ed-step-body">Llegamos antes del call time. El auto impecable, listo para cámara. Permanecemos en set durante toda la producción para cualquier ajuste.</p>
+      </div>
+
+      <div class="ed-step" data-reveal data-delay="3">
+        <span class="ed-step-num">04</span>
+        <h3 class="ed-step-title">Post-producción</h3>
+        <p class="ed-step-body">Si necesitás días adicionales, continuidad de locación o el mismo vehículo para reshoots, coordinamos sin problema.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     CTA
+══════════════════════════════════════════════════ -->
+<section class="inquiry" id="contacto" aria-labelledby="inquiry-heading">
+  <div class="container">
+    <p class="t-eyebrow inquiry-eyebrow" data-reveal>Consultas de producción</p>
+    <h2 class="inquiry-title" id="inquiry-heading" data-reveal data-delay="1">
+      ¿Cuál es<br>
+      tu próxima<br>
+      <em>producción?</em>
+    </h2>
+    <p class="t-body inquiry-body" data-reveal data-delay="2">
+      Contanos el proyecto y en 24 horas tenés propuesta con disponibilidad y condiciones. Trabajamos con productoras de todos los tamaños.
+    </p>
+    <div class="inquiry-actions" data-reveal data-delay="3">
+      <a href="#" class="btn-whatsapp" data-wa data-wa-msg="Hola, me gustaría consultar sobre el alquiler de un auto clásico para una producción editorial/audiovisual." aria-label="Consultar producción por WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Consultar mi producción
+      </a>
+      <a href="coleccion.html" class="btn-ghost">Ver la colección</a>
+    </div>
+    <p class="inquiry-note" data-reveal data-delay="4">Respuesta en 24 horas · Presupuesto sin cargo</p>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer" aria-label="Pie de página">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-brand-name">Todo Clásicos</p>
+        <p class="footer-tagline">Elegancia atemporal para los momentos que importan. Buenos Aires.</p>
+        <a href="#" class="btn-whatsapp" data-wa style="font-size:0.75rem; padding:0.65rem 1.25rem; margin-top:0.5rem; display:inline-flex;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Consultar
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Experiencias</h4>
+        <ul>
+          <li><a href="bodas.html">Bodas</a></li>
+          <li><a href="escapes.html">Escapes</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="ejecutivo.html">Ejecutivo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>La Marca</h4>
+        <ul>
+          <li><a href="coleccion.html">La Colección</a></li>
+          <li><a href="#" data-wa>Reservas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#" data-wa>WhatsApp</a></li>
+          <li><a href="tel:+5491139475311">+54 11 3947 5311</a></li>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Todo Clásicos · Buenos Aires</p>
+      <nav class="footer-bottom-links" aria-label="Links del footer">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="whatsapp-float" data-wa aria-label="Contactar por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
