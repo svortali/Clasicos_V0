@@ -9,18 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='72' fill='%23C5A35C'>T</text></svg>">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* ── Page-specific overrides ── */
-    .hero { --hero-bg: linear-gradient(160deg, #1a0f0a 0%, #0d0906 60%, #090909 100%); }
+    /* ── Page-specific hero — warm rose cream ── */
     .hero-media {
-      background: var(--hero-bg);
-      position: absolute; inset: 0;
-    }
-    .hero-media::before {
-      content: '';
-      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 70% 40%, rgba(197,163,92,0.10) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(139,90,60,0.15) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 55% at 65% 35%, rgba(197,163,92,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 15% 80%, rgba(180,130,80,0.08) 0%, transparent 60%),
+        linear-gradient(160deg, #EFE5D4 0%, #EBE0CA 40%, #F5F0E8 100%);
+      position: absolute; inset: 0;
     }
 
     /* Moment cards — 2-col grid */
@@ -154,7 +149,6 @@
       letter-spacing: 0.08em;
     }
 
-    /* Section alt background */
     .section-alt { background: var(--surface); }
   </style>
 </head>
@@ -234,7 +228,7 @@
 <!-- ══════════════════════════════════════════════════
      MOMENTS — service breakdown
 ══════════════════════════════════════════════════ -->
-<section style="padding: var(--section-v) 0; background: var(--background);" aria-labelledby="moments-heading">
+<section style="padding: var(--section-v) 0; background: var(--bg);" aria-labelledby="moments-heading">
   <div class="container">
     <div>
       <span class="gold-line" aria-hidden="true"></span>
@@ -347,7 +341,7 @@
 <!-- ══════════════════════════════════════════════════
      TESTIMONIALS
 ══════════════════════════════════════════════════ -->
-<section style="padding: var(--section-v) 0; background: var(--background);" aria-labelledby="testimonials-heading">
+<section style="padding: var(--section-v) 0; background: var(--bg);" aria-labelledby="testimonials-heading">
   <div class="container">
     <p class="t-eyebrow" data-reveal>Parejas que confiaron en nosotros</p>
     <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="testimonials-heading" data-reveal data-delay="1">

@@ -9,17 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='72' fill='%23C5A35C'>T</text></svg>">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* Ejecutivo hero — dark, authoritative */
+    /* Ejecutivo hero — cool slate-white, authoritative */
     .hero-media {
-      background: linear-gradient(160deg, #070707 0%, #0a0a0d 60%, #090909 100%);
-      position: absolute; inset: 0;
-    }
-    .hero-media::before {
-      content: '';
-      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 50% 40% at 85% 25%, rgba(197,163,92,0.07) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 60% at 5% 75%, rgba(60,60,80,0.08) 0%, transparent 60%);
+        radial-gradient(ellipse 50% 40% at 85% 25%, rgba(130,140,165,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 5% 75%, rgba(197,163,92,0.07) 0%, transparent 55%),
+        linear-gradient(160deg, #E2E4EC 0%, #DDE0EA 40%, #EAECF2 100%);
+      position: absolute; inset: 0;
     }
 
     /* Services — clean list grid */
@@ -201,7 +197,7 @@
 
 
 <!-- STATEMENT -->
-<section style="padding: var(--section-v) 0; background: var(--background);">
+<section style="padding: var(--section-v) 0; background: var(--bg);">
   <div class="container">
     <div style="max-width: 56ch;">
       <span class="gold-line" aria-hidden="true"></span>
@@ -219,7 +215,7 @@
 
 
 <!-- SERVICES -->
-<section style="padding: 0 0 var(--section-v); background: var(--background);" aria-labelledby="services-heading">
+<section style="padding: 0 0 var(--section-v); background: var(--bg);" aria-labelledby="services-heading">
   <div class="container">
     <p class="t-eyebrow" data-reveal>Servicios disponibles</p>
     <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="services-heading" data-reveal data-delay="1">
