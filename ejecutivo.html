@@ -3,423 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Todo Clásicos · Ejecutivo — Traslados VIP y eventos corporativos con autos clásicos en Buenos Aires. Presencia, protocolo y distinción.">
-  <title>Ejecutivo — Todo Clásicos · Buenos Aires</title>
-
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='72' fill='%23C5A35C'>T</text></svg>">
+  <title>Ejecutivo — Solo Clásicos</title>
+  <meta name="description" content="Traslados ejecutivos y VIP en autos clásicos de lujo en Buenos Aires. Mercedes W126 y Jaguar XJ6.">
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    /* Ejecutivo hero — cool slate-white, authoritative */
-    .hero-media {
-      background:
-        radial-gradient(ellipse 50% 40% at 85% 25%, rgba(130,140,165,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 60% at 5% 75%, rgba(197,163,92,0.07) 0%, transparent 55%),
-        linear-gradient(160deg, #E2E4EC 0%, #DDE0EA 40%, #EAECF2 100%);
-      position: absolute; inset: 0;
-    }
-
-    /* Services — clean list grid */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    .service-item {
-      padding: 2rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      background: var(--surface);
-      transition: border-color 0.3s ease;
-    }
-    .service-item:hover { border-color: var(--gold-dark); }
-    .service-icon {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border-soft);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.25rem;
-      color: var(--gold);
-      font-size: 1rem;
-    }
-    .service-name {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 0 0 0.5rem;
-    }
-    .service-detail {
-      font-size: 0.875rem;
-      color: var(--text-dim);
-      line-height: 1.75;
-      margin: 0;
-    }
-
-    /* Why corporate */
-    .corporate-split {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 6rem;
-      align-items: start;
-    }
-    @media (max-width: 768px) {
-      .corporate-split { grid-template-columns: 1fr; gap: 3rem; }
-    }
-
-    /* Feature points */
-    .feature-point {
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .feature-point:last-child { border-bottom: none; }
-    .feature-bar {
-      width: 2px;
-      height: 100%;
-      min-height: 3rem;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      flex-shrink: 0;
-      margin-top: 0.2rem;
-    }
-    .feature-text h4 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 0 0 0.35rem;
-    }
-    .feature-text p {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    /* Testimonial — corporate single */
-    .corporate-testimonial {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--gold-dark);
-      padding: 2.5rem;
-      border-radius: 2px;
-      max-width: 700px;
-    }
-    .corporate-testimonial blockquote {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--text);
-      line-height: 1.65;
-      font-style: italic;
-      margin: 0 0 1.5rem;
-    }
-    .corporate-testimonial cite {
-      font-style: normal;
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      display: block;
-    }
-    .corporate-testimonial cite strong {
-      color: var(--gold);
-      font-weight: 600;
-    }
-  </style>
 </head>
-<body>
+<body class="page-ejecutivo">
 
-<!-- NAVIGATION -->
-<nav class="nav" id="nav" aria-label="Navegación principal">
-  <a href="index.html" class="nav-logo" aria-label="Todo Clásicos — inicio">
-    Todo <span>Clásicos</span>
-  </a>
-  <ul class="nav-links" role="list">
-    <li><a href="bodas.html">Bodas</a></li>
-    <li><a href="escapes.html">Escapes</a></li>
-    <li><a href="editorial.html">Editorial</a></li>
-    <li><a href="ejecutivo.html" class="active">Ejecutivo</a></li>
-    <li><a href="coleccion.html">Colección</a></li>
-    <li><a href="#contacto" class="nav-cta" data-wa aria-label="Contactar por WhatsApp">Contacto</a></li>
-  </ul>
-  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="LOGO.png" alt="Solo Clásicos"></a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="bodas.html">Casamientos</a>
+      <a href="escapes.html">Escapadas</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="ejecutivo.html" class="active">Ejecutivo</a>
+      <a href="coleccion.html">Nuestra Colección</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Menú móvil">
-  <a href="bodas.html">Bodas</a>
-  <a href="escapes.html">Escapes</a>
-  <a href="editorial.html">Editorial</a>
-  <a href="ejecutivo.html">Ejecutivo</a>
-  <a href="coleccion.html">Colección</a>
-  <a href="#contacto" data-wa>Contacto</a>
-</div>
+  <nav class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="bodas.html">Casamientos</a>
+    <a href="escapes.html">Escapadas</a>
+    <a href="editorial.html">Editorial</a>
+    <a href="ejecutivo.html">Ejecutivo</a>
+    <a href="coleccion.html">Nuestra Colección</a>
+  </nav>
 
+  <!-- ── HERO ── -->
+  <section class="page-hero">
+    <img
+      class="page-hero-img"
+      src="https://images.pexels.com/photos/16215641/pexels-photo-16215641.jpeg?auto=compress&cs=tinysrgb&w=1920"
+      alt="Mercedes clásico de lujo en carretera"
+      onload="this.classList.add('loaded')"
+      fetchpriority="high"
+    >
+    <div class="page-hero-veil"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Experiencia · Ejecutivo</div>
+      <h1 class="page-hero-title">
+        La primera<br>
+        impresión no<br>
+        se <em>negocia</em>.
+      </h1>
+      <p class="page-hero-lead">Para recibir a un cliente importante o llegar a donde importa. Un clásico de lujo con chofer que dice todo sin decir nada.</p>
+      <a
+        href="#contacto"
+        class="btn-gold"
+        data-wa
+        data-wa-msg="Hola, quiero consultar un traslado ejecutivo con auto clásico. ¿Qué opciones tienen?"
+      >Consultar Traslado Ejecutivo</a>
+    </div>
+  </section>
 
-<!-- HERO -->
-<section class="hero" id="inicio" aria-label="Ejecutivo hero">
-  <div class="hero-media" role="img" aria-label="Ejecutivo — presencia corporativa"></div>
-  <div class="hero-overlay" aria-hidden="true"></div>
+  <!-- ── INTRO ── -->
+  <section class="section-dark">
+    <div class="container">
+      <div class="intro-inner">
+        <div data-reveal>
+          <span class="gold-rule"></span>
+          <span class="t-eyebrow">La distinción</span>
+          <h2 class="section-heading" style="margin-top:1.25rem;">
+            Cuando el auto<br>
+            <em>habla</em> por vos.
+          </h2>
+        </div>
+        <div data-reveal data-delay="2">
+          <p class="intro-p">Hay ciertos momentos de negocios donde los detalles definen el tono de todo lo que viene después. La llegada al aeropuerto. El primer encuentro con un socio estratégico. La cena que cierra el acuerdo.</p>
+          <p class="intro-p" style="margin-top:1.25rem;">Nuestros traslados ejecutivos combinan la elegancia atemporal de los grandes sedanes clásicos con un servicio que prioriza la puntualidad, la discreción y el confort.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="hero-content">
-    <p class="hero-eyebrow">Corporativo · VIP · Protocolo</p>
-
-    <h1 class="hero-title">
-      La primera<br>
-      impresión<br>
-      <em>no se repite.</em>
-    </h1>
-
-    <p class="hero-lead">
-      Para quienes entienden que la elegancia es una herramienta de negocios.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#contacto" class="btn-primary" data-wa data-wa-msg="Hola, me gustaría consultar sobre un traslado VIP o evento corporativo con un auto clásico.">
-        Consultar servicio
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M3 8h10M9 4l4 4-4 4"/>
-        </svg>
-      </a>
-      <a href="coleccion.html" class="btn-ghost">Ver autos</a>
+  <!-- ── SPLIT: Mercedes W126 ── -->
+  <div class="split-block">
+    <div class="split-img">
+      <img
+        src="https://images.pexels.com/photos/16215639/pexels-photo-16215639.jpeg?auto=compress&cs=tinysrgb&w=1280"
+        alt="Mercedes W126 clásico de lujo"
+        loading="lazy"
+      >
+    </div>
+    <div class="split-text" data-reveal>
+      <span class="t-eyebrow">El poder discreto</span>
+      <h2 class="section-heading">Mercedes<br><em>W126 1989</em></h2>
+      <p class="t-body">El gran sedán que definió una era. El W126 fue el automóvil de presidentes, directores y diplomáticos de los años 80. Su presencia es imponente sin ser ostentosa — exactamente lo que un ejecutivo necesita.</p>
+      <div class="tags">
+        <span class="tag">1989</span>
+        <span class="tag">Sedán de Lujo</span>
+        <span class="tag">Con Chofer</span>
+        <span class="tag">VIP</span>
+      </div>
+      <a
+        href="#contacto"
+        class="btn-gold"
+        data-wa
+        data-wa-msg="Hola, me interesa el Mercedes W126 para un traslado ejecutivo. ¿Tienen disponibilidad?"
+      >Consultar el W126</a>
     </div>
   </div>
 
-  <div class="hero-scroll-hint" aria-hidden="true">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
+  <!-- ── DIVIDER ── -->
+  <div class="img-divider">
+    <img
+      src="https://images.pexels.com/photos/15071552/pexels-photo-15071552.jpeg?auto=compress&cs=tinysrgb&w=1920"
+      alt="Auto de lujo en la ciudad al anochecer"
+      loading="lazy"
+    >
   </div>
-</section>
 
+  <!-- ── SPLIT: Jaguar XJ6 (reversed) ── -->
+  <div class="split-block reverse">
+    <div class="split-img">
+      <img
+        src="https://images.pexels.com/photos/15264253/pexels-photo-15264253.jpeg?auto=compress&cs=tinysrgb&w=1280"
+        alt="Jaguar XJ6 sedán de lujo"
+        loading="lazy"
+      >
+    </div>
+    <div class="split-text" data-reveal>
+      <span class="t-eyebrow">El aristócrata</span>
+      <h2 class="section-heading">Jaguar<br><em>XJ6 Serie III</em></h2>
+      <p class="t-body">Para quienes prefieren el estilo sobre la convención. El XJ6 tiene una elegancia angular, casi provocativa, que resulta perfecta para recibir clientes internacionales o llegar a un evento donde la diferenciación importa. Inglés de pura cepa.</p>
+      <div class="tags">
+        <span class="tag">1987</span>
+        <span class="tag">Sedán Inglés</span>
+        <span class="tag">Con Chofer</span>
+        <span class="tag">Traslado VIP</span>
+      </div>
+      <a
+        href="#contacto"
+        class="btn-gold"
+        data-wa
+        data-wa-msg="Hola, me interesa el Jaguar XJ6 para un traslado ejecutivo. ¿Tienen disponibilidad?"
+      >Consultar el XJ6</a>
+    </div>
+  </div>
 
-<!-- STATEMENT -->
-<section style="padding: var(--section-v) 0; background: var(--bg);">
-  <div class="container">
-    <div style="max-width: 56ch;">
-      <span class="gold-line" aria-hidden="true"></span>
-      <p class="t-eyebrow" data-reveal>El servicio corporativo</p>
-      <h2 style="font-family: var(--font-display); font-size: var(--text-section); font-weight: 700; color: var(--text); line-height: 1.15; margin: 0.5rem 0 1.5rem;" data-reveal data-delay="1">
-        Llegás distinto.<br>
-        <em style="color: var(--gold-light);">La reunión empieza antes.</em>
+  <!-- ── TRIO ── -->
+  <div class="trio-grid" data-reveal>
+    <div class="trio-card">
+      <img
+        src="https://images.pexels.com/photos/8425027/pexels-photo-8425027.jpeg?auto=compress&cs=tinysrgb&w=900"
+        alt="Servicio con chofer ejecutivo"
+        loading="lazy"
+      >
+      <span class="trio-label">Servicio con Chofer</span>
+    </div>
+    <div class="trio-card">
+      <img
+        src="https://images.pexels.com/photos/16215626/pexels-photo-16215626.jpeg?auto=compress&cs=tinysrgb&w=900"
+        alt="Mercedes clásico de frente"
+        loading="lazy"
+      >
+      <span class="trio-label">Puntualidad</span>
+    </div>
+    <div class="trio-card">
+      <img
+        src="https://images.pexels.com/photos/8425057/pexels-photo-8425057.jpeg?auto=compress&cs=tinysrgb&w=900"
+        alt="Apertura de puerta de auto de lujo"
+        loading="lazy"
+      >
+      <span class="trio-label">El Detalle</span>
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <section class="inquiry" id="contacto">
+    <div class="container">
+      <span class="t-eyebrow inquiry-eyebrow">Reservas · Ejecutivo</span>
+      <h2 class="inquiry-heading">
+        ¿Cuándo es<br>
+        el <em>traslado</em>?
       </h2>
-      <p class="t-body" style="color: var(--text-dim);" data-reveal data-delay="2">
-        Un cliente importante, una reunión de directorio, un evento de gala. Hay ocasiones donde el traslado es parte del mensaje. Un clásico impecable con chofer profesional comunica exactamente lo que quería comunicar antes de decir una sola palabra.
+      <p class="inquiry-body">
+        Confirmamos disponibilidad rápido. Mandanos fecha, horario y punto de partida — coordinamos todo para que lleguen en tiempo y con estilo.
       </p>
-    </div>
-  </div>
-</section>
-
-
-<!-- SERVICES -->
-<section style="padding: 0 0 var(--section-v); background: var(--bg);" aria-labelledby="services-heading">
-  <div class="container">
-    <p class="t-eyebrow" data-reveal>Servicios disponibles</p>
-    <h2 style="font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 0;" id="services-heading" data-reveal data-delay="1">
-      Para cada ocasión corporativa.
-    </h2>
-
-    <div class="services-grid">
-
-      <div class="service-item" data-reveal>
-        <div class="service-icon" aria-hidden="true">→</div>
-        <h3 class="service-name">Recepción de clientes VIP</h3>
-        <p class="service-detail">Recibís a tu cliente importante en el aeropuerto o el hotel con el auto que demuestra la seriedad de tu empresa. Primera impresión que no se olvida.</p>
-      </div>
-
-      <div class="service-item" data-reveal data-delay="1">
-        <div class="service-icon" aria-hidden="true">◆</div>
-        <h3 class="service-name">Eventos de gala</h3>
-        <p class="service-detail">Premios, galas corporativas, lanzamientos de producto. El auto como parte del protocolo del evento, coordinado con tu equipo de logística.</p>
-      </div>
-
-      <div class="service-item" data-reveal data-delay="2">
-        <div class="service-icon" aria-hidden="true">○</div>
-        <h3 class="service-name">Traslados ejecutivos</h3>
-        <p class="service-detail">Reuniones de directorio, visitas institucionales, cenas de negocios. Puntualidad absoluta y discreción garantizadas.</p>
-      </div>
-
-      <div class="service-item" data-reveal>
-        <div class="service-icon" aria-hidden="true">⬛</div>
-        <h3 class="service-name">Lanzamientos de marca</h3>
-        <p class="service-detail">El auto clásico como parte del storytelling de tu marca. Ideal para el momento de llegada al evento o como prop en la cobertura mediática.</p>
-      </div>
-
-      <div class="service-item" data-reveal data-delay="1">
-        <div class="service-icon" aria-hidden="true">◇</div>
-        <h3 class="service-name">Incentivos corporativos</h3>
-        <p class="service-detail">Regalá una experiencia que se recuerda. Un día en un clásico para tu equipo top performer o para un cliente que merece algo especial.</p>
-      </div>
-
-      <div class="service-item" data-reveal data-delay="2">
-        <div class="service-icon" aria-hidden="true">≡</div>
-        <h3 class="service-name">Servicio por horas</h3>
-        <p class="service-detail">¿Necesitás el auto disponible durante todo un evento? Servicio por horas con chofer en espera. Flexible y coordinado a tu cronograma.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- WHY CORPORATE -->
-<section style="padding: var(--section-v) 0; background: var(--surface);" aria-labelledby="why-corp-heading">
-  <div class="container">
-    <div class="corporate-split">
-
-      <div data-reveal>
-        <p class="t-eyebrow">Nuestro estándar</p>
-        <h2 style="font-family: var(--font-display); font-size: clamp(1.5rem, 2.5vw, 2.25rem); font-weight: 700; color: var(--text); margin: 0.5rem 0 2.5rem; line-height: 1.2;" id="why-corp-heading">
-          Lo que espera<br>el mundo corporativo.
-        </h2>
-
-        <div class="feature-point">
-          <div class="feature-bar"></div>
-          <div class="feature-text">
-            <h4>Puntualidad no negociable</h4>
-            <p>En negocios, el tiempo es todo. Llegamos con 15 minutos de anticipación a cada servicio. Siempre.</p>
-          </div>
-        </div>
-
-        <div class="feature-point">
-          <div class="feature-bar"></div>
-          <div class="feature-text">
-            <h4>Chofer con protocolo</h4>
-            <p>Profesional, con vestimenta formal, conocimiento del protocolo corporativo y máxima discreción.</p>
-          </div>
-        </div>
-
-        <div class="feature-point">
-          <div class="feature-bar"></div>
-          <div class="feature-text">
-            <h4>Coordinación directa con tu equipo</h4>
-            <p>Trabajamos con tu asistente, event planner o gerente de logística para garantizar que todo fluya sin interrupciones.</p>
-          </div>
-        </div>
-
-        <div class="feature-point">
-          <div class="feature-bar"></div>
-          <div class="feature-text">
-            <h4>Facturación empresarial</h4>
-            <p>Emitimos factura tipo A o B según necesidad. Proceso de pago simple para departamentos de compras.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div data-reveal data-delay="1">
-        <div class="corporate-testimonial">
-          <blockquote>
-            "Lo contratamos para recibir a un cliente importante del exterior. La primera impresión fue increíble — llegó al hotel en el Mercedes W111 y literalmente me llamó cinco minutos después para decirme que nunca lo habían recibido así. Cerramos el contrato esa misma noche."
-          </blockquote>
-          <cite>
-            <strong>Diego Rossi</strong><br>
-            Director Comercial · Empresa de logística internacional · CABA
-          </cite>
-        </div>
-
-        <div class="corporate-testimonial" style="margin-top: 1.5rem;">
-          <blockquote>
-            "Para el lanzamiento de nuestro nuevo producto usamos el Cadillac en la llegada al evento. Las fotos y el video de esa noche fueron todo un hit en redes. El auto transformó completamente la cobertura del evento."
-          </blockquote>
-          <cite>
-            <strong>Florencia Martínez</strong><br>
-            Brand Manager · Empresa de consumo masivo · Buenos Aires
-          </cite>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- CTA -->
-<section class="inquiry" id="contacto" aria-labelledby="inquiry-heading">
-  <div class="container">
-    <p class="t-eyebrow inquiry-eyebrow" data-reveal>Consultas corporativas</p>
-    <h2 class="inquiry-title" id="inquiry-heading" data-reveal data-delay="1">
-      ¿Cuándo es<br>
-      tu próximo<br>
-      <em>evento?</em>
-    </h2>
-    <p class="t-body inquiry-body" data-reveal data-delay="2">
-      Respondemos en menos de 2 horas en días hábiles. Presupuesto sin cargo para servicios corporativos.
-    </p>
-    <div class="inquiry-actions" data-reveal data-delay="3">
-      <a href="#" class="btn-whatsapp" data-wa data-wa-msg="Hola, me gustaría consultar sobre un servicio ejecutivo/corporativo con un auto clásico." aria-label="Consultar servicio ejecutivo por WhatsApp">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Consultar servicio
-      </a>
-      <a href="coleccion.html" class="btn-ghost">Ver la colección</a>
-    </div>
-    <p class="inquiry-note" data-reveal data-delay="4">Respuesta en menos de 2 horas · Factura empresarial disponible</p>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer" aria-label="Pie de página">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <p class="footer-brand-name">Todo Clásicos</p>
-        <p class="footer-tagline">Elegancia atemporal para los momentos que importan. Buenos Aires.</p>
-        <a href="#" class="btn-whatsapp" data-wa style="font-size:0.75rem; padding:0.65rem 1.25rem; margin-top:0.5rem; display:inline-flex;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          Consultar
+      <div class="inquiry-actions">
+        <a
+          href="#"
+          class="btn-wa"
+          data-wa
+          data-wa-msg="Hola, quiero consultar un traslado ejecutivo con auto clásico. ¿Cuáles son las opciones y precios?"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Coordinar Traslado
         </a>
+        <a href="coleccion.html" class="btn-outline">Ver toda la Colección</a>
       </div>
-      <div class="footer-col">
-        <h4>Experiencias</h4>
-        <ul>
-          <li><a href="bodas.html">Bodas</a></li>
-          <li><a href="escapes.html">Escapes</a></li>
-          <li><a href="editorial.html">Editorial</a></li>
-          <li><a href="ejecutivo.html">Ejecutivo</a></li>
-        </ul>
+      <p class="inquiry-note">Respondemos en menos de 24&nbsp;hs · CABA y GBA</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Solo <em>Clásicos</em></div>
+          <p class="footer-tagline">Autos clásicos de lujo para casamientos, editoriales, escapadas y traslados ejecutivos en Buenos Aires.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Experiencias</h5>
+          <ul>
+            <li><a href="bodas.html">Casamientos</a></li>
+            <li><a href="escapes.html">Escapadas</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="ejecutivo.html">Ejecutivo</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Nuestra Colección</h5>
+          <ul>
+            <li><a href="coleccion.html#w111">Mercedes W111</a></li>
+            <li><a href="coleccion.html#ss1">SS1 1935</a></li>
+            <li><a href="coleccion.html#miata">Mazda Miata</a></li>
+            <li><a href="coleccion.html#slk">Mercedes SLK</a></li>
+            <li><a href="coleccion.html#tr7">Triumph TR7</a></li>
+            <li><a href="coleccion.html#xj6">Jaguar XJ6</a></li>
+            <li><a href="coleccion.html#w126">Mercedes W126</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul>
+            <li><a href="#" data-wa>WhatsApp</a></li>
+            <li><a href="mailto:hola@clasicomoments.com">Email</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>La Marca</h4>
-        <ul>
-          <li><a href="coleccion.html">La Colección</a></li>
-          <li><a href="#" data-wa>Reservas</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="#" data-wa>WhatsApp</a></li>
-          <li><a href="tel:+5491139475311">+54 11 3947 5311</a></li>
-          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Solo Clásicos. Buenos Aires, Argentina.</span>
+        <div class="footer-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2024 Todo Clásicos · Buenos Aires</p>
-      <nav class="footer-bottom-links" aria-label="Links del footer">
-        <a href="#">Privacidad</a>
-        <a href="#">Términos</a>
-      </nav>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<a href="#" class="whatsapp-float" data-wa aria-label="Contactar por WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
+  <a href="#" class="wa-float" aria-label="WhatsApp" data-wa data-wa-msg="Hola, quiero consultar sobre un traslado ejecutivo con auto clásico.">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

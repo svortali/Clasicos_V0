@@ -3,585 +3,318 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Todo Clásicos · La Colección — Mercedes-Benz W111, Ford Mustang 1965, Cadillac Eldorado 1955. Tres íconos del automóvil clásico en Buenos Aires.">
-  <title>La Colección — Todo Clásicos · Buenos Aires</title>
-
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='72' fill='%23C5A35C'>T</text></svg>">
+  <title>Nuestra Colección — Solo Clásicos</title>
+  <meta name="description" content="Los siete autos clásicos de Solo Clásicos: Mercedes W111, SS1 1935, Mazda Miata, Mercedes SLK, Triumph TR7, Jaguar XJ6 y Mercedes W126.">
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    /* Colección — editorial header, minimal hero */
-    .page-header {
-      padding: calc(var(--section-v) + 5rem) 0 var(--section-v);
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .page-header-inner {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-
-    /* Vehicle cards — large editorial */
-    .vehicle-section {
-      padding: var(--section-v) 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .vehicle-section:last-of-type { border-bottom: none; }
-    .vehicle-section:nth-child(even) { background: var(--surface); }
-
-    .vehicle-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    @media (max-width: 768px) {
-      .vehicle-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .vehicle-layout.reverse { direction: ltr; }
-    }
-    .vehicle-layout.reverse { direction: rtl; }
-    .vehicle-layout.reverse > * { direction: ltr; }
-
-    .vehicle-visual {
-      aspect-ratio: 4/3;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-    .vehicle-visual::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(197,163,92,0.05) 0%, transparent 70%);
-    }
-    .vehicle-visual svg {
-      width: 75%;
-      color: var(--text-faint);
-      position: relative;
-    }
-
-    .vehicle-badge {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold-dark);
-      padding: 0.3rem 0.75rem;
-      background: rgba(250,250,248,0.85);
-      backdrop-filter: blur(4px);
-    }
-
-    .vehicle-info {}
-    .vehicle-num {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 1rem;
-    }
-    .vehicle-name {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.1;
-      margin: 0 0 0.35rem;
-    }
-    .vehicle-year {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      letter-spacing: 0.1em;
-      display: block;
-      margin-bottom: 1.5rem;
-    }
-    .vehicle-story {
-      font-size: 0.925rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-      margin: 0 0 2rem;
-    }
-
-    /* Specs table */
-    .vehicle-specs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-bottom: 2rem;
-    }
-    .spec-item {
-      background: var(--surface);
-      padding: 0.875rem 1rem;
-    }
-    .spec-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-    .spec-value {
-      font-size: 0.875rem;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* Use cases */
-    .vehicle-uses {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .use-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      border: 1px solid var(--border-soft);
-      padding: 0.3rem 0.85rem;
-      border-radius: 1px;
-    }
-
-    /* Character label */
-    .vehicle-character {
-      padding: 1.25rem;
-      border-left: 2px solid var(--gold-dark);
-      background: var(--surface-2);
-      margin-bottom: 2rem;
-    }
-    .vehicle-character p {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      color: var(--text);
-      font-style: italic;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* CTA inline */
-    .vehicle-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    /* Collection intro */
-    .collection-intro {
-      padding-bottom: 3rem;
-    }
-  </style>
 </head>
-<body>
+<body class="page-coleccion">
 
-<!-- NAVIGATION -->
-<nav class="nav" id="nav" aria-label="Navegación principal">
-  <a href="index.html" class="nav-logo" aria-label="Todo Clásicos — inicio">
-    Todo <span>Clásicos</span>
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo"><img src="LOGO.png" alt="Solo Clásicos"></a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="bodas.html">Casamientos</a>
+      <a href="escapes.html">Escapadas</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="ejecutivo.html">Ejecutivo</a>
+      <a href="coleccion.html" class="active">Nuestra Colección</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <nav class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Inicio</a>
+    <a href="bodas.html">Casamientos</a>
+    <a href="escapes.html">Escapadas</a>
+    <a href="editorial.html">Editorial</a>
+    <a href="ejecutivo.html">Ejecutivo</a>
+    <a href="coleccion.html">Nuestra Colección</a>
+  </nav>
+
+  <!-- ── FLEET ── -->
+  <div style="padding-top: 4.5rem;">
+
+    <!-- 01 · Mercedes W111 -->
+    <article class="car-editorial" id="w111">
+      <div class="car-visual">
+        <img
+          src="https://images.pexels.com/photos/29284858/pexels-photo-29284858.jpeg?auto=compress&cs=tinysrgb&w=1280"
+          alt="Mercedes W111 Fintail"
+          loading="lazy"
+        >
+      </div>
+      <div class="car-text" data-reveal>
+        <span class="car-num">01 / 07</span>
+        <h2 class="car-title">Mercedes-Benz W111<br>250 CE Cabriolet 1966</h2>
+        <span class="car-year">1966 · Mercedes-Benz</span>
+        <p class="car-story">El auto más solicitado de la colección. Sus aletas traseras — símbolo de una era donde el diseño automotriz era pura escultura — lo convierten en una presencia imposible de ignorar. Blanco perla, interiores de cuero beige, motor suave. El W111 llegó para quedarse en la memoria.</p>
+        <div class="tags">
+          <span class="tag">Casamientos</span>
+          <span class="tag">Editorial</span>
+          <span class="tag">Con Chofer</span>
+        </div>
+        <a
+          href="#contacto"
+          class="btn-gold"
+          data-wa
+          data-wa-msg="Hola, me interesa reservar el Mercedes W111. ¿Tienen disponibilidad?"
+        >Reservar el W111</a>
+      </div>
+    </article>
+
+    <!-- 02 · SS1 1935 -->
+    <article class="car-editorial" id="ss1">
+      <div class="car-visual">
+        <img
+          src="https://images.pexels.com/photos/16524381/pexels-photo-16524381.jpeg?auto=compress&cs=tinysrgb&w=1280"
+          alt="SS1 1935 Roadster"
+          loading="lazy"
+        >
+      </div>
+      <div class="car-text" data-reveal>
+        <span class="car-num">02 / 07</span>
+        <h2 class="car-title">Standard Swallow<br>SS1 1935</h2>
+        <span class="car-year">1935 · Standard Swallow</span>
+        <p class="car-story">La pieza más rara y más deseada. Fabricado noventa años atrás, el SS1 lleva consigo el peso de una historia que pocas personas en Buenos Aires han tenido el privilegio de experimentar. Guardabarros curvos, capó largo, parrilla cromada. Un personaje que no necesita presentación.</p>
+        <div class="tags">
+          <span class="tag">Casamientos</span>
+          <span class="tag">Editorial</span>
+          <span class="tag">Con Chofer</span>
+        </div>
+        <a
+          href="#contacto"
+          class="btn-gold"
+          data-wa
+          data-wa-msg="Hola, me interesa reservar el SS1 1935. ¿Tienen disponibilidad?"
+        >Reservar el SS1</a>
+      </div>
+    </article>
+
+    <!-- 03 · Mazda Miata -->
+    <article class="car-editorial" id="miata">
+      <div class="car-visual">
+        <img
+          src="https://images.pexels.com/photos/7263410/pexels-photo-7263410.jpeg?auto=compress&cs=tinysrgb&w=1280"
+          alt="Mazda Miata MX-5"
+          loading="lazy"
+        >
+      </div>
+      <div class="car-text" data-reveal>
+        <span class="car-num">03 / 07</span>
+        <h2 class="car-title">Mazda<br>Miata</h2>
+        <span class="car-year">1992 · Mazda · Roadster</span>
+        <p class="car-story">Diseñado bajo una filosofía japonesa simple: la pura alegría de conducir. El Miata es liviano, preciso y honesto. Sin excesos ni pretensiones. Techo abajo, asientos bajos, motor que canta. Para quien entiende que los mejores momentos en ruta son los más simples.</p>
+        <div class="tags">
+          <span class="tag">Escapadas</span>
+          <span class="tag">Manejo Propio</span>
+          <span class="tag">Descapotable</span>
+        </div>
+        <a
+          href="#contacto"
+          class="btn-gold"
+          data-wa
+          data-wa-msg="Hola, me interesa reservar el Mazda Miata. ¿Tienen disponibilidad?"
+        >Reservar el Miata</a>
+      </div>
+    </article>
+
+    <!-- 04 · Mercedes SLK -->
+    <article class="car-editorial" id="slk">
+      <div class="car-visual">
+        <img
+          src="https://images.pexels.com/photos/34067249/pexels-photo-34067249.jpeg?auto=compress&cs=tinysrgb&w=1280"
+          alt="Mercedes SLK convertible"
+          loading="lazy"
+        >
+      </div>
+      <div class="car-text" data-reveal>
+        <span class="car-num">04 / 07</span>
+        <h2 class="car-title">Mercedes SLK<br>Primera Generación</h2>
+        <span class="car-year">Mercedes-Benz</span>
+        <p class="car-story">El convertible con firma alemana. El SLK equilibra la emoción deportiva con la sofisticación que solo Mercedes puede ofrecer. Techo rígido retráctil, interiores bien terminados, presencia en ruta. Para escapes que merecen algo más que lo ordinario.</p>
+        <div class="tags">
+          <span class="tag">Escapadas</span>
+          <span class="tag">Manejo Propio</span>
+          <span class="tag">Techo Rígido</span>
+        </div>
+        <a
+          href="#contacto"
+          class="btn-gold"
+          data-wa
+          data-wa-msg="Hola, me interesa reservar el Mercedes SLK. ¿Tienen disponibilidad?"
+        >Reservar el SLK</a>
+      </div>
+    </article>
+
+    <!-- 05 · Triumph TR7 -->
+    <article class="car-editorial" id="tr7">
+      <div class="car-visual">
+        <img
+          src="https://images.pexels.com/photos/20347715/pexels-photo-20347715.jpeg?auto=compress&cs=tinysrgb&w=1280"
+          alt="Triumph TR7 deportivo inglés"
+          loading="lazy"
+        >
+      </div>
+      <div class="car-text" data-reveal>
+        <span class="car-num">05 / 07</span>
+        <h2 class="car-title">Triumph<br>TR7</h2>
+        <span class="car-year">Triumph · Deportivo Inglés</span>
+        <p class="car-story">La rareza que los entendidos reconocen de inmediato. El TR7 tiene una personalidad propia: líneas de cuña radicales, capó bajo y un carácter que no pide disculpas. Difícil de encontrar, imposible de ignorar. El auto de los que saben.</p>
+        <div class="tags">
+          <span class="tag">Escapadas</span>
+          <span class="tag">Manejo Propio</span>
+          <span class="tag">Deportivo</span>
+        </div>
+        <a
+          href="#contacto"
+          class="btn-gold"
+          data-wa
+          data-wa-msg="Hola, me interesa reservar el Triumph TR7. ¿Tienen disponibilidad?"
+        >Reservar el TR7</a>
+      </div>
+    </article>
+
+    <!-- 06 · Jaguar XJ6 -->
+    <article class="car-editorial" id="xj6">
+      <div class="car-visual">
+        <img
+          src="https://images.pexels.com/photos/35070140/pexels-photo-35070140.jpeg?auto=compress&cs=tinysrgb&w=1280"
+          alt="Jaguar XJ6 Serie III"
+          loading="lazy"
+        >
+      </div>
+      <div class="car-text" data-reveal>
+        <span class="car-num">06 / 07</span>
+        <h2 class="car-title">Jaguar<br>XJ6 1987</h2>
+        <span class="car-year">1987 · Jaguar</span>
+        <p class="car-story">Para quienes entienden que la elegancia puede ser amenazante. El XJ6 combina líneas felinas con una autoridad silenciosa que ningún auto moderno puede replicar. Un Jaguar de sangre pura — el tipo de auto que aparece en novelas de espías y campañas de moda oscura.</p>
+        <div class="tags">
+          <span class="tag">Editorial</span>
+          <span class="tag">Ejecutivo</span>
+          <span class="tag">Con Chofer</span>
+        </div>
+        <a
+          href="#contacto"
+          class="btn-gold"
+          data-wa
+          data-wa-msg="Hola, me interesa reservar el Jaguar XJ6. ¿Tienen disponibilidad?"
+        >Reservar el XJ6</a>
+      </div>
+    </article>
+
+    <!-- 07 · Mercedes W126 -->
+    <article class="car-editorial" id="w126">
+      <div class="car-visual">
+        <img
+          src="https://images.pexels.com/photos/16215639/pexels-photo-16215639.jpeg?auto=compress&cs=tinysrgb&w=1280"
+          alt="Mercedes W126 1989"
+          loading="lazy"
+        >
+      </div>
+      <div class="car-text" data-reveal>
+        <span class="car-num">07 / 07</span>
+        <h2 class="car-title">Mercedes-Benz<br>W126 1989</h2>
+        <span class="car-year">1989 · Mercedes-Benz</span>
+        <p class="car-story">El gran sedán que definió el lujo de una época. El W126 fue el automóvil de jefes de Estado, directores de banco y embajadores durante los años 80. Robusto, imponente y refinado. Para traslados ejecutivos donde la discreción y el peso de la marca importan tanto como la comodidad.</p>
+        <div class="tags">
+          <span class="tag">Ejecutivo</span>
+          <span class="tag">Casamientos</span>
+          <span class="tag">Con Chofer</span>
+        </div>
+        <a
+          href="#contacto"
+          class="btn-gold"
+          data-wa
+          data-wa-msg="Hola, me interesa reservar el Mercedes W126. ¿Tienen disponibilidad?"
+        >Reservar el W126</a>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ── CTA ── -->
+  <section class="inquiry" id="contacto">
+    <div class="container">
+      <span class="t-eyebrow inquiry-eyebrow">Reservas</span>
+      <h2 class="inquiry-heading">
+        ¿Cuál es<br>
+        tu <em>auto</em>?
+      </h2>
+      <p class="inquiry-body">
+        Cada auto tiene una personalidad distinta. Si no estás seguro cuál es el correcto para tu ocasión, escribinos — te ayudamos a elegir el que mejor cuenta tu historia.
+      </p>
+      <div class="inquiry-actions">
+        <a
+          href="#"
+          class="btn-wa"
+          data-wa
+          data-wa-msg="Hola, vi la colección y me gustaría consultar cuál auto se adapta mejor a mi ocasión."
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Consultar por WhatsApp
+        </a>
+        <a href="index.html" class="btn-outline">Volver al Inicio</a>
+      </div>
+      <p class="inquiry-note">Respondemos en menos de 24&nbsp;hs · Buenos Aires · CABA y GBA</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Solo <em>Clásicos</em></div>
+          <p class="footer-tagline">Autos clásicos de lujo para casamientos, editoriales, escapadas y traslados ejecutivos en Buenos Aires.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Experiencias</h5>
+          <ul>
+            <li><a href="bodas.html">Casamientos</a></li>
+            <li><a href="escapes.html">Escapadas</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="ejecutivo.html">Ejecutivo</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Nuestra Colección</h5>
+          <ul>
+            <li><a href="#w111">Mercedes W111</a></li>
+            <li><a href="#ss1">SS1 1935</a></li>
+            <li><a href="#miata">Mazda Miata</a></li>
+            <li><a href="#slk">Mercedes SLK</a></li>
+            <li><a href="#tr7">Triumph TR7</a></li>
+            <li><a href="#xj6">Jaguar XJ6</a></li>
+            <li><a href="#w126">Mercedes W126</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul>
+            <li><a href="#" data-wa>WhatsApp</a></li>
+            <li><a href="mailto:hola@clasicomoments.com">Email</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Solo Clásicos. Buenos Aires, Argentina.</span>
+        <div class="footer-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="wa-float" aria-label="WhatsApp" data-wa data-wa-msg="Hola, vi la colección y quiero consultar sobre disponibilidad.">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-  <ul class="nav-links" role="list">
-    <li><a href="bodas.html">Bodas</a></li>
-    <li><a href="escapes.html">Escapes</a></li>
-    <li><a href="editorial.html">Editorial</a></li>
-    <li><a href="ejecutivo.html">Ejecutivo</a></li>
-    <li><a href="coleccion.html" class="active">Colección</a></li>
-    <li><a href="#contacto" class="nav-cta" data-wa aria-label="Contactar por WhatsApp">Contacto</a></li>
-  </ul>
-  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
 
-<div id="nav-mobile" class="nav-mobile" role="dialog" aria-label="Menú móvil">
-  <a href="bodas.html">Bodas</a>
-  <a href="escapes.html">Escapes</a>
-  <a href="editorial.html">Editorial</a>
-  <a href="ejecutivo.html">Ejecutivo</a>
-  <a href="coleccion.html">Colección</a>
-  <a href="#contacto" data-wa>Contacto</a>
-</div>
-
-
-<!-- PAGE HEADER (no hero image — editorial, clean) -->
-<header class="page-header" aria-labelledby="col-heading">
-  <div class="container">
-    <div class="page-header-inner">
-      <div class="collection-intro">
-        <span class="gold-line" aria-hidden="true"></span>
-        <p class="t-eyebrow" style="margin-bottom: 0.75rem;">La colección</p>
-        <h1 style="font-family: var(--font-display); font-size: var(--text-section); font-weight: 700; color: var(--text); line-height: 1.1; margin: 0;" id="col-heading">
-          Tres íconos.<br>
-          <em style="color: var(--gold-light);">Un solo estándar.</em>
-        </h1>
-      </div>
-      <div style="max-width: 36ch;">
-        <p style="font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; margin: 0 0 1.5rem;">
-          Cada vehículo de nuestra flota fue seleccionado por su historia visual, su presencia y su capacidad de transformar cualquier momento en un recuerdo.
-        </p>
-        <a href="#contacto" class="btn-primary" data-wa>
-          Consultar disponibilidad
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
-
-
-<!-- ══════════════════════════════════════════════════
-     VEHICLE 01 — Mercedes-Benz W111
-══════════════════════════════════════════════════ -->
-<section class="vehicle-section" id="mercedes" aria-labelledby="merc-heading">
-  <div class="container">
-    <div class="vehicle-layout">
-
-      <div data-reveal>
-        <div class="vehicle-visual">
-          <span class="vehicle-badge">Icónico</span>
-          <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M25 70 C25 70 42 38 88 35 C112 34 136 35 156 38 L186 41 C200 42 214 52 218 64 L222 70 L25 70Z" fill="currentColor" opacity="0.5"/>
-            <ellipse cx="68" cy="72" rx="16" ry="16" stroke="currentColor" stroke-width="2.5" fill="none"/>
-            <ellipse cx="174" cy="72" rx="16" ry="16" stroke="currentColor" stroke-width="2.5" fill="none"/>
-            <path d="M84 38 L98 28 L148 28 L160 38" stroke="currentColor" stroke-width="2" fill="none"/>
-            <path d="M160 36 L170 40" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M25 70 L18 70 L18 63 L25 63" stroke="currentColor" stroke-width="2" fill="none"/>
-            <path d="M222 70 L229 70 L229 63 L222 63" stroke="currentColor" stroke-width="2" fill="none"/>
-            <line x1="85" y1="28" x2="85" y2="40" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-            <line x1="110" y1="27" x2="110" y2="39" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-            <line x1="135" y1="28" x2="135" y2="39" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          </svg>
-        </div>
-      </div>
-
-      <div data-reveal data-delay="1">
-        <span class="vehicle-num">01 / 03</span>
-        <h2 class="vehicle-name" id="merc-heading">Mercedes-Benz<br>W111</h2>
-        <span class="vehicle-year">1963 – 1971 · 220 S Coupé</span>
-
-        <div class="vehicle-character">
-          <p>"El clásico alemán por definición. Líneas que nunca envejecen, una presencia que impone respeto sin necesidad de llamar la atención."</p>
-        </div>
-
-        <p class="vehicle-story">
-          El W111 de Mercedes-Benz es uno de los automóviles más fotografiados de la historia del diseño automotriz. Sus líneas de finales de los 60 representan la cumbre del diseño germánico de la posguerra: funcional, elegante, inapelable. En 60 años, nunca dejó de verse bien en ninguna foto.
-        </p>
-
-        <div class="vehicle-specs">
-          <div class="spec-item">
-            <span class="spec-label">Origen</span>
-            <span class="spec-value">Stuttgart, Alemania</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Año</span>
-            <span class="spec-value">1963 – 1971</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Color</span>
-            <span class="spec-value">Blanco crema</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Interior</span>
-            <span class="spec-value">Cuero arena</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Capacidad</span>
-            <span class="spec-value">2 pasajeros + chofer</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Condición</span>
-            <span class="spec-value">Restauración completa</span>
-          </div>
-        </div>
-
-        <div class="vehicle-uses">
-          <span class="use-tag">Bodas</span>
-          <span class="use-tag">Editorial</span>
-          <span class="use-tag">Ejecutivo</span>
-          <span class="use-tag">Escapadas</span>
-          <span class="use-tag">Sesiones fotográficas</span>
-        </div>
-
-        <div class="vehicle-cta">
-          <a href="#contacto" class="btn-primary" data-wa data-wa-msg="Hola, me gustaría consultar sobre la disponibilidad del Mercedes-Benz W111.">
-            Consultar disponibilidad
-          </a>
-          <a href="#mustang" class="btn-ghost" style="font-size: 0.8rem;">Ver siguiente →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     VEHICLE 02 — Ford Mustang 1965
-══════════════════════════════════════════════════ -->
-<section class="vehicle-section" id="mustang" aria-labelledby="mustang-heading">
-  <div class="container">
-    <div class="vehicle-layout reverse">
-
-      <div data-reveal>
-        <div class="vehicle-visual">
-          <span class="vehicle-badge">Legendario</span>
-          <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M18 66 C18 66 36 34 78 32 C102 31 132 32 158 35 L192 38 C208 40 220 52 223 64 L226 66 L18 66Z" fill="currentColor" opacity="0.5"/>
-            <ellipse cx="58" cy="68" rx="15" ry="15" stroke="currentColor" stroke-width="2.5" fill="none"/>
-            <ellipse cx="182" cy="68" rx="15" ry="15" stroke="currentColor" stroke-width="2.5" fill="none"/>
-            <path d="M74 34 L86 24 L148 24 L162 34" stroke="currentColor" stroke-width="2" fill="none"/>
-            <path d="M162 32 L172 36" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M192 34 L200 28 L210 34" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
-            <line x1="92" y1="23" x2="92" y2="35" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-            <line x1="118" y1="23" x2="118" y2="35" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-            <line x1="144" y1="23" x2="144" y2="34" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          </svg>
-        </div>
-      </div>
-
-      <div data-reveal data-delay="1">
-        <span class="vehicle-num">02 / 03</span>
-        <h2 class="vehicle-name" id="mustang-heading">Ford<br>Mustang</h2>
-        <span class="vehicle-year">1965 · Fastback Coupé</span>
-
-        <div class="vehicle-character">
-          <p>"Energía americana concentrada en metal y vidrio. El Mustang no pide permiso — aparece y toma el protagonismo."</p>
-        </div>
-
-        <p class="vehicle-story">
-          El Mustang del '65 es posiblemente el auto más cinematográfico de la historia. Steve McQueen en Bullitt lo volvió símbolo de libertad y adrenalina. Hoy, seis décadas después, sigue siendo el mismo fenómeno visual: imposible ignorar, imposible olvidar. Ideal para producciones que necesitan statement.
-        </p>
-
-        <div class="vehicle-specs">
-          <div class="spec-item">
-            <span class="spec-label">Origen</span>
-            <span class="spec-value">Detroit, EE.UU.</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Año</span>
-            <span class="spec-value">1965</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Color</span>
-            <span class="spec-value">Rojo fastback</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Interior</span>
-            <span class="spec-value">Negro y cromo</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Capacidad</span>
-            <span class="spec-value">2+2 pasajeros</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Condición</span>
-            <span class="spec-value">Restauración original</span>
-          </div>
-        </div>
-
-        <div class="vehicle-uses">
-          <span class="use-tag">Editorial</span>
-          <span class="use-tag">Video musical</span>
-          <span class="use-tag">Escapadas</span>
-          <span class="use-tag">Sesiones fotográficas</span>
-          <span class="use-tag">Bodas</span>
-        </div>
-
-        <div class="vehicle-cta">
-          <a href="#contacto" class="btn-primary" data-wa data-wa-msg="Hola, me gustaría consultar sobre la disponibilidad del Ford Mustang 1965.">
-            Consultar disponibilidad
-          </a>
-          <a href="#cadillac" class="btn-ghost" style="font-size: 0.8rem;">Ver siguiente →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     VEHICLE 03 — Cadillac Eldorado 1955
-══════════════════════════════════════════════════ -->
-<section class="vehicle-section" id="cadillac" aria-labelledby="cad-heading">
-  <div class="container">
-    <div class="vehicle-layout">
-
-      <div data-reveal>
-        <div class="vehicle-visual">
-          <span class="vehicle-badge">Exclusive</span>
-          <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 68 C12 68 26 32 72 30 C100 29 138 30 168 32 L198 35 C212 37 222 50 225 65 L228 68 L12 68Z" fill="currentColor" opacity="0.5"/>
-            <ellipse cx="55" cy="70" rx="16" ry="16" stroke="currentColor" stroke-width="2.5" fill="none"/>
-            <ellipse cx="188" cy="70" rx="16" ry="16" stroke="currentColor" stroke-width="2.5" fill="none"/>
-            <path d="M70 32 L83 22 L158 22 L170 32" stroke="currentColor" stroke-width="2" fill="none"/>
-            <path d="M196 33 L205 25 L216 33" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M216 31 L224 35" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="88" y1="21" x2="88" y2="33" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-            <line x1="116" y1="21" x2="116" y2="33" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-            <line x1="144" y1="21" x2="144" y2="32" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-          </svg>
-        </div>
-      </div>
-
-      <div data-reveal data-delay="1">
-        <span class="vehicle-num">03 / 03</span>
-        <h2 class="vehicle-name" id="cad-heading">Cadillac<br>Eldorado</h2>
-        <span class="vehicle-year">1955 · Convertible Series 62</span>
-
-        <div class="vehicle-character">
-          <p>"Hollywood dorado, exceso bien medido. El Cadillac no llega a un lugar — lo inaugura."</p>
-        </div>
-
-        <p class="vehicle-story">
-          El Eldorado del '55 representa la cumbre del diseño americano de posguerra: aletas traseras, cromo abundante, tapizado de lujo. Es el auto de las estrellas del rock, los grandes empresarios y las películas clásicas de Hollywood. Cuando aparece, todo el mundo sabe que algo importante está a punto de pasar.
-        </p>
-
-        <div class="vehicle-specs">
-          <div class="spec-item">
-            <span class="spec-label">Origen</span>
-            <span class="spec-value">Detroit, EE.UU.</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Año</span>
-            <span class="spec-value">1955</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Color</span>
-            <span class="spec-value">Marfil y cromo</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Interior</span>
-            <span class="spec-value">Cuero rojo</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Capacidad</span>
-            <span class="spec-value">3 pasajeros + chofer</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Condición</span>
-            <span class="spec-value">Original + retapizado</span>
-          </div>
-        </div>
-
-        <div class="vehicle-uses">
-          <span class="use-tag">Ejecutivo</span>
-          <span class="use-tag">Bodas</span>
-          <span class="use-tag">Editorial</span>
-          <span class="use-tag">Campaña publicitaria</span>
-          <span class="use-tag">Eventos VIP</span>
-        </div>
-
-        <div class="vehicle-cta">
-          <a href="#contacto" class="btn-primary" data-wa data-wa-msg="Hola, me gustaría consultar sobre la disponibilidad del Cadillac Eldorado 1955.">
-            Consultar disponibilidad
-          </a>
-          <a href="#mercedes" class="btn-ghost" style="font-size: 0.8rem;">↑ Volver al primero</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════
-     CTA FINAL
-══════════════════════════════════════════════════ -->
-<section class="inquiry" id="contacto" aria-labelledby="inquiry-heading">
-  <div class="container">
-    <p class="t-eyebrow inquiry-eyebrow" data-reveal>Reservas y disponibilidad</p>
-    <h2 class="inquiry-title" id="inquiry-heading" data-reveal data-delay="1">
-      ¿Cuál es<br>
-      el tuyo?
-    </h2>
-    <p class="t-body inquiry-body" data-reveal data-delay="2">
-      Escribinos con tu fecha y el auto que te interesa. En menos de una hora sabés si está disponible y armamos juntos el servicio.
-    </p>
-    <div class="inquiry-actions" data-reveal data-delay="3">
-      <a href="#" class="btn-whatsapp" data-wa aria-label="Consultar por WhatsApp">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Consultar disponibilidad
-      </a>
-      <a href="index.html" class="btn-ghost">← Volver al inicio</a>
-    </div>
-    <p class="inquiry-note" data-reveal data-delay="4">Respuesta en menos de una hora · Sin compromiso</p>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer" aria-label="Pie de página">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <p class="footer-brand-name">Todo Clásicos</p>
-        <p class="footer-tagline">Elegancia atemporal para los momentos que importan. Buenos Aires.</p>
-        <a href="#" class="btn-whatsapp" data-wa style="font-size:0.75rem; padding:0.65rem 1.25rem; margin-top:0.5rem; display:inline-flex;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          Consultar
-        </a>
-      </div>
-      <div class="footer-col">
-        <h4>Experiencias</h4>
-        <ul>
-          <li><a href="bodas.html">Bodas</a></li>
-          <li><a href="escapes.html">Escapes</a></li>
-          <li><a href="editorial.html">Editorial</a></li>
-          <li><a href="ejecutivo.html">Ejecutivo</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>La Colección</h4>
-        <ul>
-          <li><a href="#mercedes">Mercedes-Benz W111</a></li>
-          <li><a href="#mustang">Ford Mustang 1965</a></li>
-          <li><a href="#cadillac">Cadillac Eldorado 1955</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="#" data-wa>WhatsApp</a></li>
-          <li><a href="tel:+5491139475311">+54 11 3947 5311</a></li>
-          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2024 Todo Clásicos · Buenos Aires</p>
-      <nav class="footer-bottom-links" aria-label="Links del footer">
-        <a href="#">Privacidad</a>
-        <a href="#">Términos</a>
-      </nav>
-    </div>
-  </div>
-</footer>
-
-<a href="#" class="whatsapp-float" data-wa aria-label="Contactar por WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
