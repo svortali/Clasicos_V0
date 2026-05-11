@@ -122,6 +122,64 @@ function initMarquee() {
   track.innerHTML += track.innerHTML;
 }
 
+/* ─── Dropdown navigation ───────────────────────────────── */
+
+function initDropdowns() {
+  const items = document.querySelectorAll('.nav-item--dropdown');
+  items.forEach(item => {
+    let closeTimer;
+
+    const open  = () => { clearTimeout(closeTimer); item.classList.add('open'); };
+    const close = () => { closeTimer = setTimeout(() => item.classList.remove('open'), 120); };
+
+    item.addEventListener('mouseenter', open);
+    item.addEventListener('mouseleave', close);
+
+    // Touch / click toggle
+    item.querySelector('.nav-trigger')?.addEventListener('click', e => {
+      e.stopPropagation();
+      item.classList.toggle('open');
+    });
+  });
+
+  document.addEventListener('click', () => {
+    items.forEach(i => i.classList.remove('open'));
+  });
+}
+
+/* ─── Testimonials rotator ───────────────────────────────── */
+
+function initTestimonials() {
+  const cards = document.querySelectorAll('.tst-card');
+  const dots  = document.querySelectorAll('.tst-dot');
+  if (!cards.length) return;
+
+  let current = 0;
+  let timer;
+
+  function goTo(index) {
+    cards[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    cards[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo((current + 1) % cards.length), 6000);
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goTo(parseInt(dot.dataset.index));
+      startTimer();
+    });
+  });
+
+  startTimer();
+}
+
 /* ─── INIT ───────────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -131,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initMarquee();
   initHeroGSAP();
+  initDropdowns();
+  initTestimonials();
 });
 
 window.TodoClasicos = { WA_LINK };
