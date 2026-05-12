@@ -180,6 +180,44 @@ function initTestimonials() {
   startTimer();
 }
 
+/* ─── Carousel ───────────────────────────────────────────── */
+
+function initCarousels() {
+  document.querySelectorAll('[data-carousel]').forEach(carousel => {
+    const track  = carousel.querySelector('.carousel-track');
+    const slides = track.querySelectorAll('img');
+    const dots   = carousel.querySelectorAll('.carousel-dot');
+    const prev   = carousel.querySelector('.carousel-btn--prev');
+    const next   = carousel.querySelector('.carousel-btn--next');
+    let current  = 0;
+    let timer;
+    let touchStartX = 0;
+
+    function go(n) {
+      current = (n + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => go(current + 1), 4500);
+    }
+
+    prev.addEventListener('click', () => { go(current - 1); startTimer(); });
+    next.addEventListener('click', () => { go(current + 1); startTimer(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { go(i); startTimer(); }));
+
+    carousel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+      const delta = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(delta) > 40) { go(delta > 0 ? current + 1 : current - 1); startTimer(); }
+    });
+
+    startTimer();
+  });
+}
+
 /* ─── INIT ───────────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -191,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroGSAP();
   initDropdowns();
   initTestimonials();
+  initCarousels();
 });
 
 window.TodoClasicos = { WA_LINK };

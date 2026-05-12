@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Solo Clásicos">
+  <rect width="512" height="512" rx="64" fill="#060606"/>
+  <g fill="none" stroke="#D9A441" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <!-- outer fender / body arch -->
+    <path d="M96 308c16-130 304-130 320 0"/>
+    <!-- lower bumper curve -->
+    <path d="M135 370c76 56 166 56 242 0"/>
+    <!-- chassis line -->
+    <path d="M122 342h268"/>
+    <!-- windshield / cabin arch -->
+    <path d="M178 292c20-48 136-48 156 0"/>
+    <!-- roof arch -->
+    <path d="M202 215c28-22 80-22 108 0"/>
+    <!-- front wheel arch -->
+    <path d="M176 298c-16-28-56-22-64 10"/>
+    <!-- front wheel -->
+    <circle cx="148" cy="309" r="26"/>
+    <!-- rear wheel arch -->
+    <path d="M336 298c16-28 56-22 64 10"/>
+    <!-- rear wheel -->
+    <circle cx="364" cy="309" r="26"/>
+    <!-- grille (bottom aligned to chassis at y=342, was y=376) -->
+    <path d="M224 284h64v58h-64z"/>
+    <!-- grille slats (end at y=342, were ending at y=372) -->
+    <path d="M240 286v56M256 286v56M272 286v56"/>
+    <!-- hood ornament -->
+    <path d="M256 250v34"/>
+    <!-- running boards -->
+    <path d="M82 316h54M74 344h46M430 316h-54M438 344h-46"/>
+    <!-- ground shadow -->
+    <path d="M88 394c95 74 241 74 336 0"/>
+    <!-- headlights -->
+    <circle cx="175" cy="272" r="14"/>
+    <circle cx="337" cy="272" r="14"/>
+  </g>
+</svg>

@@ -213,14 +213,12 @@ ul, ol { list-style: none; }
 .nav-logo {
   display: flex;
   align-items: center;
-  overflow: hidden;
   height: 3.5rem;
 }
 .nav-logo img {
-  height: 10rem;
+  height: 2.75rem;
   width: auto;
   display: block;
-  margin-top: -3rem;
   flex-shrink: 0;
 }
 
@@ -1190,6 +1188,74 @@ body.page-coleccion .nav .nav-trigger.active { color: #1C1814; }
   transition: transform 1.2s cubic-bezier(0.25, 0, 0, 1);
 }
 .car-editorial:hover .car-visual img { transform: scale(1.04); }
+.car-editorial:hover .carousel-track img { transform: none; }
+
+/* ── Carousel ───────────────────────────────────────────── */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+  transition: transform 0.7s cubic-bezier(0.25, 0, 0, 1);
+}
+.carousel-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+  transition: none;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  background: rgba(10, 10, 10, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+.carousel-btn--prev { left: 1rem; }
+.carousel-btn--next { right: 1rem; }
+.carousel-btn:hover { background: rgba(10, 10, 10, 0.85); }
+.carousel-dots {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.45rem;
+  z-index: 2;
+}
+.carousel-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, transform 0.25s;
+}
+.carousel-dot.active {
+  background: var(--gold);
+  transform: scale(1.5);
+}
 
 .car-text {
   background: var(--dark);
@@ -1317,7 +1383,7 @@ body.page-home .nav {
   padding-bottom: 1.1rem;
 }
 body.page-home .nav .nav-logo { height: 4rem; }
-body.page-home .nav .nav-logo img { height: 12rem; margin-top: -3.6rem; }
+body.page-home .nav .nav-logo img { height: 3rem; margin-top: 0; }
 body.page-home .nav .nav-links a { color: #5A5550; }
 body.page-home .nav .nav-links a:hover,
 body.page-home .nav .nav-links a.active { color: #1C1814; }
@@ -1343,6 +1409,7 @@ body.page-home .intro-p { color: #7A756E; }
 body.page-home .col-preview { background: #F5F2EB; }
 body.page-home .col-heading { color: #1C1814; }
 body.page-home .col-grid { background: #E8E2D8; }
+body.page-home .col-card { background: #FFFFFF; }
 body.page-home .col-info {
   background: #FFFFFF;
   border-top-color: #E8E2D8;
