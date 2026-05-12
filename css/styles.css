@@ -378,12 +378,12 @@ body.page-coleccion .nav .nav-trigger.active { color: #1C1814; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 1.75rem;
 }
 .nav-mobile.open { display: flex; }
 .nav-mobile a {
   font-family: var(--font-d);
-  font-size: var(--text-xl);
+  font-size: clamp(1.5rem, 5vw, 2rem);
   font-weight: 300;
   color: var(--cream);
   letter-spacing: 0.04em;
@@ -1468,7 +1468,8 @@ body.page-home .col-heading {
 
 .testimonials {
   background: #F5F2EB;
-  padding: var(--section) 0;
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: var(--section);
 }
 
 .tst-inner {
@@ -1612,27 +1613,18 @@ body.page-home .col-heading {
   .tst-stage { min-height: 420px; }
 }
 
-/* ── HOW IT WORKS ──────────────────────────────────────────── */
+/* ── HOW IT WORKS (merged into intro) ──────────────────────── */
 
-.how-it-works {
-  background: #FFFFFF;
-  padding: var(--section) 0;
+.intro-steps {
+  margin-top: clamp(3rem, 5vw, 5rem);
+  padding-top: clamp(3rem, 5vw, 5rem);
   border-top: 1px solid #EDE8DC;
 }
 
-.hiw-header {
-  margin-bottom: clamp(3rem, 5vw, 5rem);
+.intro-steps .t-eyebrow {
+  display: block;
+  margin-bottom: 2rem;
 }
-
-.hiw-heading {
-  font-family: var(--font-d);
-  font-size: var(--text-lg);
-  font-weight: 300;
-  line-height: 1.25;
-  color: #1C1814;
-  margin-top: 1rem;
-}
-.hiw-heading em { font-style: italic; color: var(--gold); }
 
 .hiw-grid {
   display: grid;
