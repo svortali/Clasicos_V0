@@ -213,10 +213,10 @@ ul, ol { list-style: none; }
 .nav-logo {
   display: flex;
   align-items: center;
-  height: 3.5rem;
+  flex-shrink: 0;
 }
 .nav-logo img {
-  height: 2.75rem;
+  height: 3.25rem;
   width: auto;
   display: block;
   flex-shrink: 0;
@@ -683,7 +683,7 @@ body.page-coleccion .nav .nav-trigger.active { color: #1C1814; }
 .exp-card:hover .exp-link { opacity: 1; transform: translateY(0); }
 .exp-card:hover .exp-link svg { transform: translateX(4px); }
 
-/* reverse column order for bottom row (editorial left, ejecutivo right) */
+/* reverse column order for bottom row (activaciones left, traslados right) */
 .exp-card:nth-child(3) { grid-column: 2; grid-row: 2; }
 .exp-card:nth-child(4) { grid-column: 1; grid-row: 2; }
 
@@ -1393,6 +1393,9 @@ body.page-home .nav.scrolled {
   background: rgba(255, 255, 255, 0.98);
   border-bottom-color: rgba(28, 24, 20, 0.10);
 }
+body.page-home .nav.scrolled .nav-logo img {
+  filter: brightness(0) opacity(0.72);
+}
 
 body.page-home .marquee {
   background: #F5F2EB;
@@ -1837,6 +1840,59 @@ body.page-ejecutivo .marquee { background: #1C1814; border-color: rgba(255,255,2
 body.page-ejecutivo .marquee-item  { color: #3C3830; }
 body.page-ejecutivo .marquee-sep   { color: var(--silver); }
 
+/* ── EXPERIENCIAS · Warm Amber · Travel · Discovery ─────── */
+
+body.page-experiencias {
+  background: #FAF5EC;
+}
+
+body.page-experiencias .nav.scrolled {
+  background: rgba(250,245,236,0.96);
+  border-bottom-color: rgba(180,140,80,0.15);
+}
+
+body.page-experiencias .nav.scrolled .nav-links a { color: #6B4F2A; }
+body.page-experiencias .nav.scrolled .nav-links a:hover,
+body.page-experiencias .nav.scrolled .nav-links a.active { color: #2A1408; }
+
+body.page-experiencias .section-dark { background: #2A1408; }
+body.page-experiencias .split-text   { background: #FAF5EC; }
+body.page-experiencias .split-text .section-heading { color: #2A1408; }
+body.page-experiencias .split-text .t-body { color: #7A6040; }
+
+body.page-experiencias .section-heading { color: #2A1408; }
+body.page-experiencias .intro-quote { color: #2A1408; }
+body.page-experiencias .t-body { color: #7A6040; }
+body.page-experiencias .intro-p { color: #7A6040; }
+
+body.page-experiencias .t-eyebrow { color: #B8832A; }
+body.page-experiencias .gold-rule { background: #B8832A; }
+body.page-experiencias .section-heading em { color: #B8832A; }
+body.page-experiencias .page-hero-title em { color: #B8832A; }
+
+body.page-experiencias .page-hero-veil {
+  background: linear-gradient(
+    to top,
+    rgba(42,20,8,0.82) 0%,
+    rgba(42,20,8,0.35) 55%,
+    rgba(42,20,8,0.15) 100%
+  );
+}
+
+body.page-experiencias .trio-grid { background: #F0E8D4; }
+
+body.page-experiencias .btn-outline {
+  border-color: #B8832A;
+  color: #B8832A;
+}
+body.page-experiencias .btn-outline:hover {
+  background: #B8832A;
+  color: #FAF5EC;
+}
+
+body.page-experiencias .inquiry { background: #2A1408; }
+body.page-experiencias .footer  { background: #180C04; }
+
 /* ── NUESTRA COLECCIÓN · White Gallery · Coffee Table Book ── */
 
 body.page-coleccion {
@@ -1860,6 +1916,9 @@ body.page-coleccion .nav .nav-toggle span { background: #1C1814; }
 body.page-coleccion .nav.scrolled {
   background: rgba(255, 255, 255, 0.98);
   border-bottom-color: rgba(28, 24, 20, 0.10);
+}
+body.page-coleccion .nav.scrolled .nav-logo img {
+  filter: brightness(0) opacity(0.72);
 }
 
 body.page-coleccion .car-editorial {
